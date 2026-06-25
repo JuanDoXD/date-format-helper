@@ -1,0 +1,18 @@
+{
+  "name": "date-format-helper",
+  "version": "1.7.0",
+  "description": "Figma plugin para componer strings de fecha según el modelo ZH 'Time & Date format' de Entertainment XD",
+  "private": true,
+  "scripts": {
+    "test": "node tests/run-tests.js && node tests/anchor-tests.js && node tests/override-tests.js",
+    "test:compose":  "node tests/run-tests.js",
+    "test:anchor":   "node tests/anchor-tests.js",
+    "test:override": "node tests/override-tests.js"
+  },
+  "author": "XD Entertainment · Telefónica",
+  "license": "UNLICENSED",
+  "figmaPlugin": {
+    "manifest": "manifest.json",
+    "zhVersion": "0.2"
+  }
+}

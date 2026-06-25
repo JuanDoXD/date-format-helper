@@ -1,0 +1,16 @@
+{
+  "name": "Date Format Helper",
+  "id": "es.telefonica.entertainment.date-format-helper",
+  "api": "1.0.0",
+  "main": "code.js",
+  "ui": "ui.html",
+  "editorType": ["figma"],
+  "documentAccess": "dynamic-page",
+  "networkAccess": {
+    "allowedDomains": ["https://unpkg.com"],
+    "reasoning": "Phosphor Icons CSS desde unpkg (mismo CDN que otros plugins XD). Composición de fechas embebida, sin llamadas de red."
+  },
+  "menu": [
+    { "name": "Open Date Format Helper", "command": "open" }
+  ]
+}

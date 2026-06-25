@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Date Format Helper</title>
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+<style>
+/* ============ Figma theme vars (light/dark auto) ============
+   Mismas variables que el resto de plugins de XD. */
+:root {
+  --bg:           var(--figma-color-bg, #ffffff);
+  --bg-sec:       var(--figma-color-bg-secondary, #f5f5f5);
+  --bg-ter:       var(--figma-color-bg-tertiary, #ececec);
+  --bg-hover:     var(--figma-color-bg-hover, #ebebeb);
+  --bg-press:     var(--figma-color-bg-pressed, #e1e1e1);
+  --bg-sel:       var(--figma-color-bg-selected, #e5f4ff);
+  --bg-sel-sec:   var(--figma-color-bg-selected-secondary, #e5f4ff);
+  --bg-brand:     var(--figma-color-bg-brand, #0d99ff);
+  --bg-brand-h:   var(--figma-color-bg-brand-hover, #007be5);
+  --bg-success:   var(--figma-color-bg-success-tertiary, #d4f7dd);
+  --bg-warn:      var(--figma-color-bg-warning-tertiary, #fff5d6);
+  --bg-danger:    var(--figma-color-bg-danger-tertiary, #ffdede);
+  --text:         var(--figma-color-text, #1e1e1e);
+  --text-sec:     var(--figma-color-text-secondary, #666666);
+  --text-ter:     var(--figma-color-text-tertiary, #999999);
+  --text-dis:     var(--figma-color-text-disabled, #b3b3b3);
+  --text-brand:   var(--figma-color-text-brand, #0d6ec9);
+  --text-onbrand: var(--figma-color-text-onbrand, #ffffff);
+  --border:       var(--figma-color-border, #e6e6e6);
+  --border-strong:var(--figma-color-border-strong, #cccccc);
+  --border-sel:   var(--figma-color-border-selected, #0d99ff);
+  --icon:         var(--figma-color-icon, #444444);
+  --icon-sec:     var(--figma-color-icon-secondary, #777777);
+  --icon-brand:   var(--figma-color-icon-brand, #0d99ff);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:           var(--figma-color-bg, #2c2c2c);
+    --bg-sec:       var(--figma-color-bg-secondary, #383838);
+    --bg-ter:       var(--figma-color-bg-tertiary, #444444);
+    --bg-hover:     var(--figma-color-bg-hover, #404040);
+    --bg-press:     var(--figma-color-bg-pressed, #525252);
+    --bg-sel:       var(--figma-color-bg-selected, #0a3b5c);
+    --bg-sel-sec:   var(--figma-color-bg-selected-secondary, #0a3b5c);
+    --bg-brand:     var(--figma-color-bg-brand, #0d99ff);
+    --bg-brand-h:   var(--figma-color-bg-brand-hover, #3bb0ff);
+    --text:         var(--figma-color-text, #f5f5f5);
+    --text-sec:     var(--figma-color-text-secondary, #b3b3b3);
+    --text-ter:     var(--figma-color-text-tertiary, #888888);
+    --text-dis:     var(--figma-color-text-disabled, #666666);
+    --text-brand:   var(--figma-color-text-brand, #5cb6ff);
+    --text-onbrand: var(--figma-color-text-onbrand, #ffffff);
+    --border:       var(--figma-color-border, #4d4d4d);
+    --border-strong:var(--figma-color-border-strong, #6b6b6b);
+    --border-sel:   var(--figma-color-border-selected, #0d99ff);
+    --icon:         var(--figma-color-icon, #cccccc);
+    --icon-sec:     var(--figma-color-icon-secondary, #999999);
+    --icon-brand:   var(--figma-color-icon-brand, #5cb6ff);
+  }
+}
+
+* { box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+  font-size: 11px;
+  margin: 0;
+  padding: 8px 14px 80px 14px;
+  color: var(--text);
+  background: var(--bg);
+}
+
+/* Phosphor icons */
+.ph, [class^="ph-"], [class*=" ph-"] {
+  color: var(--icon);
+  vertical-align: middle;
+  line-height: 1;
+  font-size: 16px;
+}
+.icon-sm { font-size: 13px; }
+.icon-md { font-size: 16px; }
+
+/* ============ Header: operadora switcher + título ============ */
+.header-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 4px 0 8px;
+  margin-bottom: 8px;
+}
+.operadora-wrapper { position: relative; }
+.operadora-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 0 10px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  color: var(--text);
+  transition: background 0.12s;
+  line-height: 1;
+}
+.operadora-btn:hover { background: var(--bg-sec); }
+.operadora-btn .op-logo { display: inline-flex; align-items: center; height: 13px; }
+.op-logo .brand-svg { display: block; height: 100%; width: auto; }
+.op-item-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 56px;
+  flex: 0 0 56px;
+  height: 14px;
+  overflow: hidden;
+}
+.op-item-logo .brand-svg { display: block; height: 100%; width: auto; max-width: 100%; }
+.operadora-btn .op-chev {
+  opacity: 0;
+  font-size: 11px;
+  transition: opacity 0.12s;
+  color: var(--text-ter);
+}
+.operadora-btn:hover .op-chev { opacity: 1; }
+.operadora-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 4px;
+  min-width: 160px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  z-index: 100;
+  padding: 4px;
+}
+.operadora-dropdown[hidden] { display: none; }
+.operadora-dropdown .op-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 11.5px;
+  color: var(--text);
+}
+.operadora-dropdown .op-item:hover { background: var(--bg-sec); }
+.operadora-dropdown .op-item.activo {
+  background: var(--bg-sel-sec);
+  color: var(--text-brand);
+  font-weight: 500;
+}
+.operadora-dropdown .op-item .op-item-nombre {
+  flex: 1;
+  font-size: 11px;
+  color: var(--text-sec);
+}
+.operadora-dropdown .op-item .op-item-check {
+  opacity: 0;
+  color: var(--text-brand);
+  font-size: 14px;
+}
+.operadora-dropdown .op-item.activo .op-item-check { opacity: 1; }
+
+.app-title {
+  margin: 0 auto 0 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text);
+}
+.app-title small {
+  display: block;
+  font-weight: 400;
+  font-size: 9.5px;
+  color: var(--text-ter);
+}
+
+/* ============ Banda de selección ============ */
+.seleccion-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  margin: 0 -14px 8px -14px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-sec);
+  font-size: 11px;
+  color: var(--text);
+  line-height: 1.4;
+}
+.seleccion-header.empty { color: var(--text-ter); font-style: italic; }
+.seleccion-header .sh-icon { flex: 0 0 auto; font-size: 14px; color: var(--icon-sec); opacity: 0.9; }
+.seleccion-header .sh-text { flex: 1 1 auto; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.seleccion-header .sh-badge {
+  flex: 0 0 auto;
+  background: var(--bg-ter);
+  color: var(--text-sec);
+  border-radius: 3px;
+  padding: 1px 5px;
+  font-size: 9.5px;
+}
+
+/* ============ Fieldsets ============ */
+fieldset {
+  border: none;
+  background: transparent;
+  padding: 10px 14px;
+  margin: 0 -14px;
+  border-top: 1px solid var(--border);
+}
+fieldset:first-of-type { border-top: none; padding-top: 2px; }
+legend {
+  font-size: 11px;
+  color: var(--text);
+  padding: 0;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+label.field { display: block; margin: 6px 0 0 0; }
+label.field .label {
+  display: block;
+  font-size: 10px;
+  color: var(--text-sec);
+  margin-bottom: 3px;
+}
+
+/* ============ Inputs ============ */
+select, input[type="text"], input[type="date"], input[type="time"] {
+  width: 100%;
+  padding: 4px 10px;
+  height: 30px;
+  font-size: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: inherit;
+}
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding-right: 28px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23666666' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px 12px;
+}
+select::-ms-expand { display: none; }
+select:hover, input:hover { border-color: var(--border-strong); }
+select:focus, input:focus {
+  outline: none;
+  border-color: var(--border-sel);
+  box-shadow: 0 0 0 2px var(--bg-sel-sec);
+}
+
+.row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+
+.datetime-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto auto;
+  gap: 6px;
+  align-items: center;
+}
+
+/* ============ Icon buttons (Ahora, Regenerar) ============ */
+.icon-btn {
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--icon);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  flex-shrink: 0;
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
+}
+.icon-btn:hover { background: var(--bg-sec); color: var(--text); border-color: var(--border-strong); }
+.icon-btn:active { background: var(--bg-press); }
+.icon-btn .ph { font-size: 14px; color: inherit; }
+
+/* ============ Segmented control (.modos) — patrón Plugin Contenidos ============ */
+.modos {
+  display: grid;
+  background: var(--bg-sec);
+  border-radius: 999px;
+  padding: 3px;
+  gap: 2px;
+}
+.modos.cols-2 { grid-template-columns: 1fr 1fr; }
+.modos.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+.modos.cols-4 { grid-template-columns: repeat(4, 1fr); }
+.modo-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 6px 8px;
+  height: 28px;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-sec);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  line-height: 1;
+  transition: background 0.12s, color 0.12s, box-shadow 0.12s;
+  white-space: nowrap;
+}
+.modo-btn:hover { color: var(--text); }
+.modo-btn.activa {
+  background: var(--bg);
+  color: var(--text);
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+}
+.modo-btn .ph { font-size: 14px; color: inherit; }
+.modo-btn .live-dot { color: #d4262e; }
+
+.field-block + .field-block { margin-top: 10px; }
+
+/* ============ Definición (Tipo + Versión) ============ */
+.def-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.def-cell .label { margin-bottom: 4px; }
+.def-note {
+  margin-top: 8px;
+  padding: 6px 8px;
+  background: var(--bg-warn);
+  color: var(--text-warn);
+  border-radius: 6px;
+  font-size: 10px;
+  line-height: 1.35;
+}
+
+/* ============ Time scrubber ============ */
+.scrubber {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+}
+.scrubber-labels {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  font-size: 11px;
+  color: var(--text-sec);
+  text-align: center;
+  line-height: 1.25;
+  align-items: end;
+}
+.scrubber-labels span {
+  cursor: pointer;
+  padding: 2px 2px;
+  transition: color 0.12s;
+}
+.scrubber-labels span:hover { color: var(--text); }
+.scrubber-labels span.live-lbl { color: var(--text-brand); }
+.scrubber-labels span.activa {
+  color: var(--text);
+  font-weight: 600;
+}
+.scrubber-labels span.live-lbl.activa { color: var(--text-brand); }
+.scrubber-track {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  height: 24px;
+  align-items: center;
+  justify-items: center;
+}
+.scrubber-line {
+  position: absolute;
+  top: 50%;
+  left: 6.25%;
+  right: 6.25%;
+  height: 1.5px;
+  background: var(--border);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.scrubber-stop {
+  position: relative;
+  z-index: 1;
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.stop-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1.5px solid var(--text-ter);
+  transition: width 0.12s, height 0.12s, background 0.12s, border-color 0.12s;
+}
+.scrubber-stop:hover .stop-dot { background: var(--text-ter); }
+.scrubber-stop.activa .stop-dot {
+  width: 14px;
+  height: 14px;
+  background: var(--text);
+  border-color: var(--text);
+}
+.scrubber-stop[data-level="live"] .stop-dot {
+  background: var(--bg);
+  border-color: var(--bg-brand);
+}
+.scrubber-stop[data-level="live"]:hover .stop-dot {
+  background: rgba(13, 153, 255, 0.25);
+}
+.scrubber-stop[data-level="live"].activa .stop-dot {
+  background: var(--bg-brand);
+  border-color: var(--bg-brand);
+}
+
+/* ============ Composition cards (tabla ZH style) ============ */
+.composition-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto 1fr;
+  grid-auto-flow: dense;
+  gap: 4px;
+  align-items: stretch;
+}
+.composition-grid > * { grid-row: 1; }
+
+/* V2 DE participle: prefix moves to the end (Date, [Time] + participle) */
+.composition-grid.layout-de-suffix {
+  grid-template-columns: 1fr auto 1fr 1fr;
+}
+.composition-grid.layout-de-suffix #card-date,
+.composition-grid.layout-de-suffix #modos-date  { grid-column: 1; }
+.composition-grid.layout-de-suffix #card-comma,
+.composition-grid.layout-de-suffix .empty-cell  { grid-column: 2; }
+.composition-grid.layout-de-suffix #card-time,
+.composition-grid.layout-de-suffix #modos-time  { grid-column: 3; }
+.composition-grid.layout-de-suffix #card-prefix,
+.composition-grid.layout-de-suffix #modos-prefix { grid-column: 4; }
+.comp-row-controls {
+  margin-top: 6px;
+}
+.comp-card {
+  border: 1.5px solid transparent;
+  border-radius: 10px;
+  padding: 10px 6px 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+  transition: opacity 0.15s, background-color 0.15s, border-color 0.15s;
+  min-height: 56px;
+}
+.comp-card.prefix  { background: #fef3c7; border-color: #d4a017; }
+.comp-card.date    { background: #d4f7dd; border-color: #2e9a3f; }
+.comp-card.time    { background: #d6e8ff; border-color: #0d6ec9; }
+.comp-card.comma   {
+  background: #fbd6e7;
+  border-color: #c13d8a;
+  padding: 6px 2px;
+  min-width: 18px;
+  min-height: 0;
+}
+.comp-card.faded {
+  background: transparent;
+  border-color: var(--border);
+  opacity: 0.4;
+}
+.comp-card.comma.faded { opacity: 0.25; }
+.comp-name {
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: -0.005em;
+  line-height: 1.1;
+}
+.comp-card.prefix .comp-name { color: #7a5a0d; }
+.comp-card.date .comp-name   { color: #1f5f2a; }
+.comp-card.time .comp-name   { color: #0d4f8f; }
+.comp-card.comma .comp-name  { color: #8c1656; font-size: 14px; line-height: 1; }
+.comp-card.faded .comp-name  { color: var(--text-ter); }
+.comp-auto {
+  font-size: 9.5px;
+  font-weight: 500;
+  color: rgba(0,0,0,0.55);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+}
+.comp-auto .ph { font-size: 10px; }
+.comp-card.faded .comp-auto { color: var(--text-ter); }
+
+/* Override 3-state controls below cards */
+.comp-row-controls .modos {
+  padding: 2px;
+}
+.comp-row-controls .modo-btn {
+  height: 24px;
+  font-size: 11px;
+  padding: 0 6px;
+}
+.comp-row-controls .empty-cell { display: block; }
+
+/* ============ Inline text link (Por defecto) ============ */
+.label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 3px;
+}
+.label-row .label { margin-bottom: 0; }
+.text-link {
+  background: none;
+  border: none;
+  color: var(--text-brand);
+  font-size: 10px;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+}
+.text-link:hover { text-decoration: underline; }
+.text-link[disabled] {
+  color: var(--text-dis);
+  cursor: default;
+  text-decoration: none;
+}
+
+/* ============ Preview card ============ */
+.preview-card {
+  background: var(--bg-sec);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px;
+  margin: 10px 0 6px;
+  text-align: center;
+  min-height: 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+.preview-label {
+  font-size: 9px;
+  color: var(--text-ter);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+.preview-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  word-break: break-word;
+}
+
+/* ============ Apply button (sticky bottom) ============ */
+.apply-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px 14px;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  z-index: 50;
+}
+button.primary {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--bg-brand);
+  border-radius: 999px;
+  background: var(--bg-brand);
+  color: var(--text-onbrand);
+  font-family: inherit;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.12s;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+button.primary:hover { background: var(--bg-brand-h); border-color: var(--bg-brand-h); }
+button.primary:disabled { opacity: 0.4; cursor: not-allowed; }
+button.primary .ph { color: var(--text-onbrand); font-size: 14px; }
+
+.hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<!-- Header con operadora switcher -->
+<div class="header-wrap">
+  <div class="operadora-wrapper">
+    <button type="button" class="operadora-btn" id="operadoraBtn" aria-haspopup="true" aria-expanded="false" title="Cambiar operadora">
+      <span class="op-logo" id="operadoraLogo"></span>
+      <i class="ph ph-caret-down op-chev"></i>
+    </button>
+    <div class="operadora-dropdown" id="operadoraDropdown" hidden>
+      <div class="op-item" data-locale="es-ES">
+        <span class="op-item-logo logo-mplus"></span>
+        <span class="op-item-nombre">España</span>
+        <i class="ph ph-check op-item-check"></i>
+      </div>
+      <div class="op-item" data-locale="de-DE">
+        <span class="op-item-logo logo-o2"></span>
+        <span class="op-item-nombre">Alemania</span>
+        <i class="ph ph-check op-item-check"></i>
+      </div>
+      <div class="op-item" data-locale="pt-BR">
+        <span class="op-item-logo logo-vivo"></span>
+        <span class="op-item-nombre">Brasil</span>
+        <i class="ph ph-check op-item-check"></i>
+      </div>
+    </div>
+  </div>
+  <div class="app-title">
+    Date Format Helper
+    <small>ZH "Time &amp; Date format"</small>
+  </div>
+</div>
+
+<!-- Banda de selección -->
+<div class="seleccion-header empty" id="selection-status">
+  <i class="ph ph-cursor-click sh-icon"></i>
+  <span class="sh-text">Detectando selección…</span>
+</div>
+
+<!-- Form -->
+<fieldset>
+  <legend>Definición</legend>
+  <div class="def-grid">
+    <div class="def-cell">
+      <span class="label">Tipo</span>
+      <div class="modos cols-2" id="modos-deftype" role="radiogroup" aria-label="Tipo de definición">
+        <button type="button" class="modo-btn activa" data-deftype="airing">Airing</button>
+        <button type="button" class="modo-btn" data-deftype="caption">Caption</button>
+      </div>
+    </div>
+    <div class="def-cell">
+      <span class="label">Versión</span>
+      <div class="modos cols-2" id="modos-defversion" role="radiogroup" aria-label="Versión de la definición">
+        <button type="button" class="modo-btn activa" data-defversion="v1">V1</button>
+        <button type="button" class="modo-btn" data-defversion="v2">V2</button>
+      </div>
+    </div>
+  </div>
+  <div id="def-note" class="def-note hidden">Caption V1 está pendiente de validación con Localization — el output muestra Airing V1 mientras tanto.</div>
+</fieldset>
+
+<fieldset>
+  <legend>Composición</legend>
+
+  <div class="field-block">
+    <span class="label">Dominio</span>
+    <div class="modos cols-2" id="domain-modos" role="radiogroup" aria-label="Dominio">
+      <button type="button" class="modo-btn activa" data-domain="no_grabacion" role="radio" aria-checked="true">
+        <i class="ph ph-television-simple"></i>Estándar
+      </button>
+      <button type="button" class="modo-btn" data-domain="grabacion" role="radio" aria-checked="false">
+        <i class="ph-fill ph-circle live-dot icon-sm"></i>Grabación
+      </button>
+    </div>
+  </div>
+
+  <div class="field-block">
+    <span class="label">Cuándo</span>
+    <div class="scrubber">
+      <div class="scrubber-labels" id="scrubber-labels">
+        <span data-level="past_other_years">+1<br>año</span>
+        <span data-level="past_same_year">+7<br>días</span>
+        <span data-level="past_near">2-7<br>días</span>
+        <span data-level="past_immediate">Hoy-<br>Ayer</span>
+        <span data-level="live" class="live-lbl">Live<br>&nbsp;</span>
+        <span data-level="future_immediate">Hoy-<br>Mañana</span>
+        <span data-level="future_near">2-7<br>días</span>
+        <span data-level="future_far">+7<br>días</span>
+      </div>
+      <div class="scrubber-track" id="scrubber-track" role="radiogroup" aria-label="Nivel temporal">
+        <div class="scrubber-line"></div>
+        <button type="button" class="scrubber-stop" data-level="past_other_years"  role="radio" aria-checked="false" title="Pasado +1 año"><span class="stop-dot"></span></button>
+        <button type="button" class="scrubber-stop" data-level="past_same_year"    role="radio" aria-checked="false" title="Pasado +7 días"><span class="stop-dot"></span></button>
+        <button type="button" class="scrubber-stop" data-level="past_near"         role="radio" aria-checked="false" title="Pasado 2-7 días"><span class="stop-dot"></span></button>
+        <button type="button" class="scrubber-stop" data-level="past_immediate"    role="radio" aria-checked="false" title="Pasado Hoy-Ayer"><span class="stop-dot"></span></button>
+        <button type="button" class="scrubber-stop" data-level="live"              role="radio" aria-checked="false" title="Directo"><span class="stop-dot"></span></button>
+        <button type="button" class="scrubber-stop" data-level="future_immediate"  role="radio" aria-checked="false" title="Futuro Hoy-Mañana"><span class="stop-dot"></span></button>
+        <button type="button" class="scrubber-stop activa" data-level="future_near" role="radio" aria-checked="true"  title="Futuro 2-7 días"><span class="stop-dot"></span></button>
+        <button type="button" class="scrubber-stop" data-level="future_far"        role="radio" aria-checked="false" title="Futuro +7 días"><span class="stop-dot"></span></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="field-block">
+    <div class="label-row">
+      <span class="label">Bloques en el output</span>
+      <button type="button" class="text-link" id="reset-overrides" title="Volver todos a Auto">Por defecto</button>
+    </div>
+
+    <!-- Composition: tarjetas concatenadas (Prefix · DATE · , · Time) mapean a la tabla ZH -->
+    <div class="composition-grid" id="composition-cards">
+      <div class="comp-card prefix" id="card-prefix">
+        <div class="comp-name">Prefix</div>
+        <div class="comp-auto" id="auto-prefix"><span>Auto</span><i class="ph ph-check"></i></div>
+      </div>
+      <div class="comp-card date" id="card-date">
+        <div class="comp-name">DATE</div>
+        <div class="comp-auto" id="auto-date"><span>Auto</span><i class="ph ph-check"></i></div>
+      </div>
+      <div class="comp-card comma" id="card-comma">
+        <div class="comp-name">,</div>
+      </div>
+      <div class="comp-card time" id="card-time">
+        <div class="comp-name">Time</div>
+        <div class="comp-auto" id="auto-time"><span>Auto</span><i class="ph ph-check"></i></div>
+      </div>
+    </div>
+
+    <!-- Override controls 3-state alineados con cada tarjeta (sin control para coma) -->
+    <div class="composition-grid comp-row-controls">
+      <div class="modos cols-3" id="modos-prefix" role="radiogroup" aria-label="Prefix override">
+        <button type="button" class="modo-btn activa" data-block="prefix" data-mode="auto">Auto</button>
+        <button type="button" class="modo-btn" data-block="prefix" data-mode="on">On</button>
+        <button type="button" class="modo-btn" data-block="prefix" data-mode="off">Off</button>
+      </div>
+      <div class="modos cols-3" id="modos-date" role="radiogroup" aria-label="Date override">
+        <button type="button" class="modo-btn activa" data-block="date" data-mode="auto">Auto</button>
+        <button type="button" class="modo-btn" data-block="date" data-mode="on">On</button>
+        <button type="button" class="modo-btn" data-block="date" data-mode="off">Off</button>
+      </div>
+      <span class="empty-cell"></span>
+      <div class="modos cols-3" id="modos-time" role="radiogroup" aria-label="Time override">
+        <button type="button" class="modo-btn activa" data-block="time" data-mode="auto">Auto</button>
+        <button type="button" class="modo-btn" data-block="time" data-mode="on">On</button>
+        <button type="button" class="modo-btn" data-block="time" data-mode="off">Off</button>
+      </div>
+    </div>
+  </div>
+</fieldset>
+
+<fieldset>
+  <legend>Fecha y hora</legend>
+  <label class="field">
+    <span class="label">Referencia</span>
+    <div class="datetime-row">
+      <input type="date" id="referenceDate" aria-label="Fecha">
+      <input type="time" id="timeStart" step="600" aria-label="Hora inicio">
+      <button class="icon-btn" id="now-btn" type="button" title="Ahora — fecha y hora actuales" aria-label="Ahora">
+        <i class="ph ph-clock"></i>
+      </button>
+      <button class="icon-btn" id="regen-btn" type="button" title="Regenerar — fecha aleatoria dentro del nivel" aria-label="Regenerar">
+        <i class="ph ph-arrows-clockwise"></i>
+      </button>
+    </div>
+  </label>
+  <label class="field hidden" id="timeEndField">
+    <span class="label">Hora fin (solo Directo)</span>
+    <input type="time" id="timeEnd" step="600">
+  </label>
+</fieldset>
+
+<div class="preview-card">
+  <div class="preview-label">Preview</div>
+  <div class="preview-text" id="preview">—</div>
+</div>
+
+<div class="apply-bar">
+  <button class="primary" id="apply" type="button">
+    <i class="ph ph-check"></i>
+    <span id="apply-label">Aplicar</span>
+  </button>
+</div>
+
+<script>
+/* ===========================================================
+ * Logos SVG operadoras (copiados de Plugin Contenidos para coherencia)
+ * =========================================================== */
+const LOGO_SVG = {
+  mplus: '<svg class="brand-svg" viewBox="0 0 77 34" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.04265 4.12643C6.87455 4.15979 2.87244 5.19726 1.04449 12.4411C0.24831 15.5974 -0.0596851 18.8874 0.62203 22.8035C1.25076 26.4153 2.36464 29.533 3.11491 31.251C3.37376 31.8426 3.77438 32.4604 4.08399 32.8401C4.97481 33.9329 6.45776 33.8628 7.08083 33.5653C7.75991 33.2408 8.54052 32.4574 8.2578 30.6688C8.1213 29.8048 7.72736 28.5407 7.50571 27.8378C7.42175 27.5716 7.33434 27.2986 7.24548 27.0211C6.61461 25.0507 5.91029 22.851 5.84116 21.2266C5.7354 18.7473 6.7427 18.4229 7.41188 18.28C8.53668 18.0399 9.48028 19.2386 10.3762 20.7406C10.7201 21.3176 11.1432 22.0378 11.6087 22.8303C12.5897 24.5005 13.759 26.4912 14.773 28.1368C16.1225 30.3273 18.6127 32.6727 22.6124 32.5118C26.69 32.3477 29.6955 30.8381 31.2438 26.0856C31.4135 25.5649 31.5753 25.0634 31.7318 24.5782L31.7322 24.577C32.6444 21.7497 33.3785 19.4744 34.4629 17.1523C35.9244 14.0236 37.8735 12.3488 39.5152 12.8602C41.0394 13.3349 41.4196 14.7803 41.4378 16.9051C41.4541 18.7848 41.2303 20.8565 41.0557 22.3789C40.9922 22.9311 40.878 24.0423 40.9247 24.6597C41.0167 25.8722 41.5579 27.0837 42.9652 27.2774C44.4647 27.4838 45.6676 26.3211 46.1481 24.9159C46.3378 24.3618 46.4994 23.5141 46.5863 22.9126C47.027 19.8756 47.1416 17.8342 46.9428 14.7269C46.7103 11.093 45.9778 7.77924 44.6989 4.91155C43.476 2.16924 41.5114 0.411621 38.9916 0.256404C36.2026 0.0845071 33.0022 1.8802 31.3229 5.36425C30.2988 7.48884 29.4102 9.65098 28.7086 11.3582C28.3498 12.2311 28.04 12.9851 27.7859 13.5543C27.0237 15.2607 25.9047 16.3121 24.1834 16.4877C22.0786 16.7028 20.2656 15.2202 18.9373 13.1071C17.7792 11.2641 15.4845 7.75608 14.2563 6.57734C14.2086 6.53155 14.1606 6.48529 14.1123 6.43867C12.9916 5.35818 11.672 4.08599 9.04265 4.12643Z" fill="black"/><path d="M67.8076 13.5132H76.501V19.6157H67.8076V27.8979H61.7227V19.6157H53.8984V13.5132H61.7227V5.23096H67.8076V13.5132Z" fill="black"/></svg>',
+  o2: '<svg class="brand-svg" viewBox="0 0 92 34" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M49.5493 27.674V4.77374H41.1076V2.28631C41.1076 1.14116 41.7569 0.509297 42.9342 0.509297H63.7545V4.77374H55.2721V27.674H49.5493Z" fill="#0000FF"/><path fill-rule="evenodd" clip-rule="evenodd" d="M85.9553 0.509297H91.475L82.1403 27.674H76.6613C75.7277 27.674 75.2002 27.2397 74.9161 26.4106L66.4337 2.28631C66.0685 1.22016 66.5557 0.509297 67.7323 0.509297H71.7908L78.8529 22.5019L85.9553 0.509297Z" fill="#0000FF"/><path fill-rule="evenodd" clip-rule="evenodd" d="M27.4226 34V32.0151C28.5564 30.9462 32.6897 27.5865 32.6897 25.4153C32.6897 24.329 31.6954 23.8207 30.7016 23.8207C29.6723 23.8207 28.6958 24.2615 27.8938 24.7705L27.702 22.8025C28.8008 22.2593 30.0734 21.9541 31.3122 21.9541C33.6312 21.9541 35.1309 23.0911 35.1309 25.4153C35.1309 27.9259 32.5325 30.2335 30.5444 32.1336H35.5149V34H27.4226Z" fill="#0000FF"/><path fill-rule="evenodd" clip-rule="evenodd" d="M5.38991 14.0011C5.38991 8.91484 8.57022 3.98509 14.0144 3.98509C19.4043 3.98509 22.5846 8.91484 22.5846 14.0011C22.5846 18.7728 19.9434 24.017 14.0144 24.017C8.0311 24.017 5.38991 18.7728 5.38991 14.0011ZM0 14.0011C0 21.6575 5.71332 28.0023 14.0144 28.0023C22.2612 28.0023 27.9745 21.6575 27.9745 14.0011C27.9745 5.87348 22.3689 0 14.0144 0C5.60578 0 0 5.87348 0 14.0011Z" fill="#0000FF"/></svg>',
+  vivo: '<svg class="brand-svg" viewBox="0 0 82 34" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M25.8653 8.59314H35.0951C35.5762 8.59314 35.7516 8.76835 35.7516 9.25067V33.8112H41.2194V9.25067C41.2194 8.76835 41.3941 8.59314 41.8752 8.59314H51.105V3.7246H25.8653V8.59314ZM24.1335 13.9007C23.8461 12.6985 22.6621 11.9215 21.4362 12.1538C21.3793 12.1564 16.8167 13.251 16.5824 13.3068C15.8559 13.4715 15.0875 13.6763 14.8414 13.0148C14.5908 12.3415 15.0404 12.0606 15.6622 11.6571C15.9849 11.4484 16.3887 11.1682 16.854 10.7022C18.1768 9.37536 18.6022 7.49659 18.6022 6.29176C18.6022 2.83805 15.7289 0.0366211 12.2836 0.0366211C8.8383 0.0366211 5.96502 2.83805 5.96502 6.29176C5.96502 7.49659 6.3911 9.37536 7.71451 10.7022C8.17921 11.1682 8.58239 11.4484 8.90571 11.6571C9.5275 12.0606 9.97649 12.3415 9.72647 13.0148C9.48037 13.6769 8.71264 13.4722 7.98417 13.3068C7.75051 13.251 3.1886 12.1564 3.13101 12.1538C1.90512 11.9215 0.721767 12.6985 0.434439 13.9007C0.434439 13.9059 0.0679157 15.4336 0.0646432 15.4474C-0.223994 16.6496 0.478946 17.882 1.67473 18.2337C1.72644 18.2567 6.71181 19.4583 6.72097 19.4609C7.6687 19.7024 8.22176 20.1735 8.22176 21.089C8.22176 21.4985 7.98483 21.9421 7.69423 22.3115C7.69423 22.3115 2.27688 29.0431 2.24939 29.0949C1.51307 30.1035 1.70091 31.5098 2.65845 32.2888C2.66173 32.292 3.87911 33.2816 3.89023 33.2902C4.84712 34.0698 6.25758 33.9667 7.09142 33.0362C7.13397 32.9995 10.4981 28.8534 10.8548 28.4138C11.2129 27.9747 11.6612 27.3054 12.2836 27.3054C12.9061 27.3054 13.3557 27.9741 13.7131 28.4138C14.0704 28.8534 17.4339 32.9995 17.4771 33.0362C18.3103 33.9667 19.7214 34.0698 20.6777 33.2902C20.6894 33.281 21.9068 32.292 21.9101 32.2888C22.8683 31.5098 23.0568 30.1035 22.3192 29.0949C22.291 29.0431 16.8743 22.3115 16.8743 22.3115C16.5831 21.9421 16.3468 21.4985 16.3468 21.089C16.3468 20.1729 16.9018 19.7024 17.8482 19.4609C17.8567 19.4583 22.8421 18.2567 22.8938 18.2337C24.0909 17.882 24.7926 16.6496 24.5039 15.4474C24.5006 15.4336 24.1361 13.9059 24.1348 13.9007H24.1335ZM77.0673 3.7246C76.3238 3.7246 76.1052 3.89982 75.8205 4.62363L72.474 13.2635C69.8933 19.9301 68.3624 24.2717 67.6405 26.3552C67.4435 26.9254 67.3126 27.2325 66.8969 27.2325C66.4597 27.2325 66.3282 26.9254 66.1312 26.3552C65.4315 24.2717 63.8784 19.9301 61.3192 13.2635L57.6448 3.72395H51.7615L63.6814 33.8105H69.8926L81.8125 3.72395H77.066L77.0673 3.7246Z" fill="#B700FF"/></svg>',
+};
+
+/* ===========================================================
+ * compose() and anchor logic — sync con src/compose.js
+ * =========================================================== */
+
+const PREFIXES = {
+  'es-ES': {
+    no_grabacion: {
+      past_other_years: 'Emitido', past_same_year: 'Emitido', past_near: 'Emitido', past_immediate: 'Emitido',
+      live: 'En emisión',
+      future_immediate: '', future_near: '', future_far: '',
+    },
+    grabacion: {
+      past_other_years: 'Grabado', past_same_year: 'Grabado', past_near: 'Grabado', past_immediate: 'Grabado',
+      live: 'Grabando',
+      future_immediate: 'Programado', future_near: 'Programado', future_far: 'Programado',
+    },
+  },
+  'de-DE': {
+    no_grabacion: {
+      past_other_years: 'Gesendet', past_same_year: 'Gesendet', past_near: 'Gesendet', past_immediate: 'Gesendet',
+      live: 'Live',
+      future_immediate: '', future_near: '', future_far: '',
+    },
+    grabacion: {
+      past_other_years: 'Aufgenommen', past_same_year: 'Aufgenommen', past_near: 'Aufgenommen', past_immediate: 'Aufgenommen',
+      live: 'Aufnahme',
+      future_immediate: 'Geplant', future_near: 'Geplant', future_far: 'Geplant',
+    },
+  },
+  'pt-BR': {
+    no_grabacion: {
+      past_other_years: 'Exibido', past_same_year: 'Exibido', past_near: 'Exibido', past_immediate: 'Exibido',
+      live: 'No ar',
+      future_immediate: '', future_near: '', future_far: '',
+    },
+    grabacion: {
+      past_other_years: 'Gravado', past_same_year: 'Gravado', past_near: 'Gravado', past_immediate: 'Gravado',
+      live: 'Gravando',
+      future_immediate: 'Programado', future_near: 'Programado', future_far: 'Programado',
+    },
+  },
+};
+
+const MONTHS = {
+  'es-ES': ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'],
+  'de-DE': ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'],
+  'pt-BR': ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'],
+};
+
+const WEEKDAYS = {
+  'es-ES': ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'],
+  'de-DE': ['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'],
+  'pt-BR': ['domingo','segunda','terça','quarta','quinta','sexta','sábado'],
+};
+
+const YESTERDAY = { 'es-ES': 'ayer',   'de-DE': 'gestern', 'pt-BR': 'ontem' };
+const TOMORROW  = { 'es-ES': 'mañana', 'de-DE': 'morgen',  'pt-BR': 'amanhã' };
+
+const TV_MINUTE_SLOTS = [0, 10, 20, 30, 40, 50];
+const TV_PROGRAMMING_WINDOW = { startHour: 6, endHour: 23 };
+const LIVE_DURATIONS_MIN = [20, 30, 40, 50, 60];
+
+const LOCALE_TO_OPERADORA = { 'es-ES': 'mplus', 'de-DE': 'o2', 'pt-BR': 'vivo' };
+const OPERADORA_TO_LOCALE = { mplus: 'es-ES', o2: 'de-DE', vivo: 'pt-BR' };
+
+function pad2(n) { return String(n).padStart(2, '0'); }
+function parseIsoDate(iso) { const p = iso.split('-').map(Number); return new Date(p[0], p[1]-1, p[2], 12, 0, 0); }
+function isoDate(d) { return d.getFullYear() + '-' + pad2(d.getMonth()+1) + '-' + pad2(d.getDate()); }
+function isoTime(d) { return pad2(d.getHours()) + ':' + pad2(d.getMinutes()); }
+function randInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
+
+function snapToTenMin(date) {
+  const d = new Date(date.getTime());
+  d.setMinutes(Math.round(d.getMinutes() / 10) * 10, 0, 0);
+  return d;
+}
+
+function randomTvTimeSlot() {
+  const hour = randInt(TV_PROGRAMMING_WINDOW.startHour, TV_PROGRAMMING_WINDOW.endHour);
+  const minute = TV_MINUTE_SLOTS[randInt(0, TV_MINUTE_SLOTS.length - 1)];
+  return { hour, minute };
+}
+
+function dayOfYear(date) {
+  const start = new Date(date.getFullYear(), 0, 0);
+  return Math.floor((date - start) / 86400000);
+}
+
+function computeDayOffset(level, now) {
+  switch (level) {
+    case 'past_immediate':   return -1;
+    case 'future_immediate': return 1;
+    case 'past_near':        return -randInt(2, 7);
+    case 'future_near':      return randInt(2, 7);
+    case 'past_same_year': {
+      const todayDoY = dayOfYear(now);
+      const maxDaysAgo = Math.max(8, todayDoY - 1);
+      return -randInt(8, maxDaysAgo);
+    }
+    case 'future_far': {
+      const endOfYear = new Date(now.getFullYear(), 11, 31);
+      const maxDaysAhead = Math.floor((endOfYear - now) / 86400000);
+      const cap = Math.min(Math.max(maxDaysAhead, 8), 180);
+      return randInt(8, cap);
+    }
+    case 'past_other_years': return -randInt(366, 365 * 3);
+    default: return 0;
+  }
+}
+
+function generateForLevel(level, now) {
+  now = now || new Date();
+  if (level === 'live') {
+    const start = snapToTenMin(now);
+    const duration = LIVE_DURATIONS_MIN[randInt(0, LIVE_DURATIONS_MIN.length - 1)];
+    const end = new Date(start.getTime() + duration * 60000);
+    return { referenceDate: isoDate(start), timeStart: isoTime(start), timeEnd: isoTime(end) };
+  }
+  const dayOffset = computeDayOffset(level, now);
+  const d = new Date(now.getTime());
+  d.setDate(d.getDate() + dayOffset);
+  const slot = randomTvTimeSlot();
+  d.setHours(slot.hour, slot.minute, 0, 0);
+  return { referenceDate: isoDate(d), timeStart: isoTime(d), timeEnd: '' };
+}
+
+function nowSnapped() {
+  const s = snapToTenMin(new Date());
+  const end = new Date(s.getTime() + 40 * 60000);
+  return { referenceDate: isoDate(s), timeStart: isoTime(s), timeEnd: isoTime(end) };
+}
+
+function formatDatePart(level, locale, referenceDate) {
+  const date = (referenceDate instanceof Date) ? referenceDate : parseIsoDate(referenceDate);
+  const day = date.getDate();
+  const monthIdx = date.getMonth();
+  const weekdayIdx = date.getDay();
+  const yearShort = String(date.getFullYear()).slice(-2);
+  const monthPadded = pad2(monthIdx + 1);
+  const dayPadded = pad2(day);
+  switch (level) {
+    case 'past_other_years':
+      if (locale === 'de-DE') return dayPadded + '.' + monthPadded + '.' + yearShort;
+      return dayPadded + '/' + monthPadded + '/' + yearShort;
+    case 'past_same_year':
+    case 'future_far': {
+      const monthName = MONTHS[locale][monthIdx];
+      if (locale === 'de-DE') return day + '. ' + monthName;
+      return day + ' ' + monthName;
+    }
+    case 'past_near':
+    case 'future_near': return WEEKDAYS[locale][weekdayIdx];
+    case 'past_immediate':   return YESTERDAY[locale];
+    case 'future_immediate': return TOMORROW[locale];
+    case 'live': return '';
+    default: return '';
+  }
+}
+
+function formatTimePart(level, timeStart, timeEnd) {
+  if (level === 'live' && timeEnd) return timeStart + ' - ' + timeEnd;
+  if (level === 'past_other_years' || level === 'past_same_year' || level === 'future_far') return '';
+  return timeStart || '';
+}
+
+function capitalizeFirst(s) { if (!s) return s; return s.charAt(0).toUpperCase() + s.slice(1); }
+
+function naturalBlocks(level, locale, domain) {
+  const hasNaturalPrefix = !!PREFIXES[locale][domain][level];
+  const hasNaturalDate = level !== 'live';
+  const hasNaturalTime = !['past_other_years', 'past_same_year', 'future_far'].includes(level);
+  return { includePrefix: hasNaturalPrefix, includeDate: hasNaturalDate, includeTime: hasNaturalTime };
+}
+
+function resolveMode(mode, naturalValue) {
+  if (mode === 'on')  return true;
+  if (mode === 'off') return false;
+  return naturalValue;
+}
+
+const DE_PARTICIPLE_PREFIXES = ['Gesendet', 'Aufgenommen', 'Geplant'];
+
+function resolveBlocks(input) {
+  const natural = naturalBlocks(input.level, input.locale, input.domain);
+  return {
+    includePrefix: resolveMode(input.prefixMode, natural.includePrefix),
+    includeDate:   resolveMode(input.dateMode,   natural.includeDate),
+    includeTime:   resolveMode(input.timeMode,   natural.includeTime),
+  };
+}
+
+function composeAiringV1(input) {
+  const { includePrefix, includeDate, includeTime } = resolveBlocks(input);
+  const naturalPrefix = PREFIXES[input.locale][input.domain][input.level];
+  const naturalDate = formatDatePart(input.level, input.locale, input.referenceDate);
+  const naturalTime = formatTimePart(input.level, input.timeStart, input.timeEnd);
+  const prefix = includePrefix ? naturalPrefix : '';
+  const datePart = includeDate ? naturalDate : '';
+  let timePart = includeTime ? naturalTime : '';
+  if (includeTime && !naturalTime && input.timeStart && input.level !== 'live') {
+    timePart = input.timeStart;
+  }
+  let head;
+  if (prefix) head = datePart ? (prefix + ' ' + datePart) : prefix;
+  else head = capitalizeFirst(datePart);
+  if (timePart) return head ? (head + ', ' + timePart) : timePart;
+  return head;
+}
+
+function composeAiringV2(input) {
+  if (input.locale !== 'de-DE') return composeAiringV1(input);
+  const { includePrefix, includeDate, includeTime } = resolveBlocks(input);
+  const naturalPrefix = PREFIXES[input.locale][input.domain][input.level];
+  const naturalDate = formatDatePart(input.level, input.locale, input.referenceDate);
+  const naturalTime = formatTimePart(input.level, input.timeStart, input.timeEnd);
+  const prefix = includePrefix ? naturalPrefix : '';
+  const datePart = includeDate ? naturalDate : '';
+  let timePart = includeTime ? naturalTime : '';
+  if (includeTime && !naturalTime && input.timeStart && input.level !== 'live') {
+    timePart = input.timeStart;
+  }
+  const isParticiple = prefix && DE_PARTICIPLE_PREFIXES.includes(prefix);
+  if (isParticiple && datePart) {
+    const dateChunk = capitalizeFirst(datePart);
+    const body = timePart ? (dateChunk + ', ' + timePart) : dateChunk;
+    return body + ' ' + prefix.toLowerCase();
+  }
+  let head;
+  if (prefix) head = datePart ? (prefix + ' ' + datePart) : prefix;
+  else head = capitalizeFirst(datePart);
+  if (timePart) return head ? (head + ', ' + timePart) : timePart;
+  return head;
+}
+
+function composeCaptionV1(input) {
+  // Stub: until Localization closes the spec, fallback to Airing V1.
+  return composeAiringV1(input);
+}
+
+function compose(input) {
+  const type = input.defType || 'airing';
+  const ver = input.defVersion || 'v1';
+  if (type === 'airing' && ver === 'v1') return composeAiringV1(input);
+  if (type === 'airing' && ver === 'v2') return composeAiringV2(input);
+  if (type === 'caption' && ver === 'v1') return composeCaptionV1(input);
+  return composeAiringV1(input);
+}
+
+/* ===========================================================
+ * UI
+ * =========================================================== */
+
+const $ = (id) => document.getElementById(id);
+let currentLocale = 'es-ES';
+let currentDomain = 'no_grabacion';
+let currentLevelId = 'future_near';
+let currentDefType = 'airing';   // 'airing' | 'caption'
+let currentDefVersion = 'v1';    // 'v1' | 'v2'
+// Per-block mode: 'auto' | 'on' | 'off'
+let overrideModes = { prefix: 'auto', date: 'auto', time: 'auto' };
+
+const LEVEL_LABELS = {
+  past_other_years: 'Pasado +1 año',
+  past_same_year:   'Pasado +7 días',
+  past_near:        'Pasado 2-7 días',
+  past_immediate:   'Pasado Hoy-Ayer',
+  live:             'Directo',
+  future_immediate: 'Futuro Hoy-Mañana',
+  future_near:      'Futuro 2-7 días',
+  future_far:       'Futuro +7 días',
+};
+
+function currentLevel() { return currentLevelId; }
+
+// Inject brand SVGs into operadora UI
+document.querySelectorAll('.op-item-logo.logo-mplus').forEach(el => { el.innerHTML = LOGO_SVG.mplus; });
+document.querySelectorAll('.op-item-logo.logo-o2').forEach(el => { el.innerHTML = LOGO_SVG.o2; });
+document.querySelectorAll('.op-item-logo.logo-vivo').forEach(el => { el.innerHTML = LOGO_SVG.vivo; });
+
+function setOperadora(locale) {
+  if (!LOCALE_TO_OPERADORA[locale]) return;
+  currentLocale = locale;
+  const op = LOCALE_TO_OPERADORA[locale];
+  $('operadoraLogo').innerHTML = LOGO_SVG[op];
+  document.querySelectorAll('#operadoraDropdown .op-item').forEach(item => {
+    item.classList.toggle('activo', item.dataset.locale === locale);
+  });
+  // Locale change may affect "natural prefix" availability for the current level/domain
+  // (semantically should not, but refresh the modified indicator anyway)
+  refreshTogglePills();
+  updatePreview();
+}
+
+$('operadoraBtn').addEventListener('click', (e) => {
+  e.stopPropagation();
+  const dd = $('operadoraDropdown');
+  const open = !dd.hasAttribute('hidden');
+  if (open) { dd.setAttribute('hidden', ''); $('operadoraBtn').setAttribute('aria-expanded', 'false'); }
+  else      { dd.removeAttribute('hidden');  $('operadoraBtn').setAttribute('aria-expanded', 'true'); }
+});
+
+document.querySelectorAll('#operadoraDropdown .op-item').forEach(item => {
+  item.addEventListener('click', () => {
+    setOperadora(item.dataset.locale);
+    $('operadoraDropdown').setAttribute('hidden', '');
+    $('operadoraBtn').setAttribute('aria-expanded', 'false');
+  });
+});
+
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.operadora-wrapper')) {
+    $('operadoraDropdown').setAttribute('hidden', '');
+    $('operadoraBtn').setAttribute('aria-expanded', 'false');
+  }
+});
+
+function getInputs() {
+  return {
+    defType: currentDefType,
+    defVersion: currentDefVersion,
+    domain: currentDomain,
+    level: currentLevel(),
+    locale: currentLocale,
+    referenceDate: $('referenceDate').value,
+    timeStart: $('timeStart').value,
+    timeEnd: $('timeEnd').value,
+    prefixMode: overrideModes.prefix,
+    dateMode:   overrideModes.date,
+    timeMode:   overrideModes.time,
+  };
+}
+
+function refreshDefSelectors() {
+  // Tipo
+  document.querySelectorAll('#modos-deftype .modo-btn').forEach(b => {
+    const on = b.dataset.deftype === currentDefType;
+    b.classList.toggle('activa', on);
+    b.setAttribute('aria-checked', on ? 'true' : 'false');
+  });
+  // Versión — V2 not yet defined for Caption, only Airing
+  document.querySelectorAll('#modos-defversion .modo-btn').forEach(b => {
+    const on = b.dataset.defversion === currentDefVersion;
+    b.classList.toggle('activa', on);
+    b.setAttribute('aria-checked', on ? 'true' : 'false');
+    const isV2 = b.dataset.defversion === 'v2';
+    if (currentDefType === 'caption' && isV2) {
+      b.disabled = true;
+      b.title = 'Caption V2 aún no definido';
+    } else {
+      b.disabled = false;
+      b.title = '';
+    }
+  });
+  // Notice for stubbed Caption V1
+  const note = $('def-note');
+  if (currentDefType === 'caption' && currentDefVersion === 'v1') {
+    note.classList.remove('hidden');
+  } else {
+    note.classList.add('hidden');
+  }
+}
+
+function refreshTogglePills() {
+  const natural = naturalBlocks(currentLevel(), currentLocale, currentDomain);
+  const keys = { prefix: 'includePrefix', date: 'includeDate', time: 'includeTime' };
+  const resolved = {}; // is each block in final output?
+
+  ['prefix', 'date', 'time'].forEach(block => {
+    const naturalOn = natural[keys[block]];
+    const mode = overrideModes[block];
+    // Final output inclusion (auto → natural, on → true, off → false)
+    const inOutput = (mode === 'on') ? true : (mode === 'off') ? false : naturalOn;
+    resolved[block] = inOutput;
+
+    // Mark selected segment in the override control
+    document.querySelectorAll('#modos-' + block + ' .modo-btn').forEach(btn => {
+      const sel = btn.dataset.mode === mode;
+      btn.classList.toggle('activa', sel);
+      btn.setAttribute('aria-checked', sel ? 'true' : 'false');
+    });
+
+    // Update the card itself — faded when not in output
+    const card = $('card-' + block);
+    if (card) {
+      card.classList.toggle('faded', !inOutput);
+    }
+
+    // Update Auto label inside the card with ✓ or ✕ based on the level's natural state
+    const autoEl = $('auto-' + block);
+    if (autoEl) {
+      const icon = autoEl.querySelector('.ph');
+      if (icon) {
+        icon.classList.remove('ph-check', 'ph-x');
+        icon.classList.add(naturalOn ? 'ph-check' : 'ph-x');
+      }
+    }
+  });
+
+  // Comma card: visible when Time is in output AND something else is (prefix or date)
+  // Matches compose() logic: comma appears between head and time only if both exist
+  const headExists = resolved.prefix || resolved.date;
+  const commaIn = resolved.time && headExists;
+  $('card-comma').classList.toggle('faded', !commaIn);
+
+  // Layout: if Airing V2 + DE + participle prefix + both prefix and date in output,
+  // visualize prefix at the end (mirrors composeAiringV2's actual word order).
+  const naturalPrefix = PREFIXES[currentLocale][currentDomain][currentLevel()];
+  const isParticipleSuffix =
+    currentDefType === 'airing' &&
+    currentDefVersion === 'v2' &&
+    currentLocale === 'de-DE' &&
+    resolved.prefix &&
+    resolved.date &&
+    naturalPrefix &&
+    DE_PARTICIPLE_PREFIXES.includes(naturalPrefix);
+
+  document.querySelectorAll('.composition-grid').forEach(g => {
+    g.classList.toggle('layout-de-suffix', !!isParticipleSuffix);
+  });
+}
+
+function resetOverridesToNatural() {
+  overrideModes = { prefix: 'auto', date: 'auto', time: 'auto' };
+  refreshTogglePills();
+}
+
+function setActiveInGroup(containerId, attr, value) {
+  document.querySelectorAll('#' + containerId + ' .modo-btn').forEach(b => {
+    const on = b.dataset[attr] === value;
+    b.classList.toggle('activa', on);
+    b.setAttribute('aria-checked', on ? 'true' : 'false');
+  });
+}
+
+function setDomain(domain) {
+  currentDomain = domain;
+  setActiveInGroup('domain-modos', 'domain', domain);
+  // Overrides persist across domain changes — only refresh the "modified" indicator.
+  refreshTogglePills();
+  updatePreview();
+}
+
+function setLevel(level) {
+  currentLevelId = level;
+  // Update scrubber visuals
+  document.querySelectorAll('.scrubber-stop').forEach(b => {
+    const on = b.dataset.level === level;
+    b.classList.toggle('activa', on);
+    b.setAttribute('aria-checked', on ? 'true' : 'false');
+  });
+  document.querySelectorAll('#scrubber-labels span').forEach(s => {
+    s.classList.toggle('activa', s.dataset.level === level);
+  });
+  // Overrides persist across level changes — only refresh "modified" indicator.
+  refreshTogglePills();
+  // Smart anchor: regenerate coherent date/time for the new level
+  regenerateForCurrentLevel();
+}
+
+function setDateTime(values) {
+  if (values.referenceDate !== undefined) $('referenceDate').value = values.referenceDate;
+  if (values.timeStart !== undefined)     $('timeStart').value     = values.timeStart;
+  if (values.timeEnd !== undefined && values.timeEnd !== '') $('timeEnd').value = values.timeEnd;
+}
+
+function updatePreview() {
+  const inputs = getInputs();
+  try {
+    const output = compose(inputs);
+    $('preview').textContent = output || '—';
+  } catch (e) {
+    $('preview').textContent = '— error: ' + e.message;
+  }
+  if (inputs.level === 'live') $('timeEndField').classList.remove('hidden');
+  else                          $('timeEndField').classList.add('hidden');
+}
+
+function regenerateForCurrentLevel() {
+  const generated = generateForLevel(currentLevel());
+  setDateTime(generated);
+  updatePreview();
+}
+
+function resetToNow() {
+  const snapped = nowSnapped();
+  setDateTime(snapped);
+  updatePreview();
+}
+
+function applyMetadataToForm(metadata) {
+  if (!metadata) return;
+  if (metadata.defType === 'airing' || metadata.defType === 'caption') {
+    currentDefType = metadata.defType;
+  }
+  if (metadata.defVersion === 'v1' || metadata.defVersion === 'v2') {
+    currentDefVersion = metadata.defVersion;
+  }
+  // Caption V2 not yet defined; coerce back to V1.
+  if (currentDefType === 'caption' && currentDefVersion === 'v2') currentDefVersion = 'v1';
+  refreshDefSelectors();
+  if (metadata.domain) {
+    currentDomain = metadata.domain;
+    setActiveInGroup('domain-modos', 'domain', currentDomain);
+  }
+  if (metadata.level && LEVEL_LABELS[metadata.level]) {
+    currentLevelId = metadata.level;
+    document.querySelectorAll('.scrubber-stop').forEach(b => {
+      const on = b.dataset.level === currentLevelId;
+      b.classList.toggle('activa', on);
+      b.setAttribute('aria-checked', on ? 'true' : 'false');
+    });
+    document.querySelectorAll('#scrubber-labels span').forEach(s => {
+      s.classList.toggle('activa', s.dataset.level === currentLevelId);
+    });
+  }
+  if (metadata.locale) setOperadora(metadata.locale);
+  if (metadata.referenceDate) $('referenceDate').value = metadata.referenceDate;
+  if (metadata.timeStart) $('timeStart').value = metadata.timeStart;
+  if (metadata.timeEnd)   $('timeEnd').value = metadata.timeEnd;
+  // Restore override modes if stored (v1.5+); else derive from legacy booleans (v1.2-1.4); else default to auto.
+  const validModes = ['auto', 'on', 'off'];
+  if (validModes.includes(metadata.prefixMode) && validModes.includes(metadata.dateMode) && validModes.includes(metadata.timeMode)) {
+    overrideModes = { prefix: metadata.prefixMode, date: metadata.dateMode, time: metadata.timeMode };
+  } else if (metadata.includePrefix !== undefined && metadata.includeDate !== undefined && metadata.includeTime !== undefined) {
+    const natural = naturalBlocks(currentLevel(), currentLocale, currentDomain);
+    overrideModes = {
+      prefix: !!metadata.includePrefix === natural.includePrefix ? 'auto' : (metadata.includePrefix ? 'on' : 'off'),
+      date:   !!metadata.includeDate   === natural.includeDate   ? 'auto' : (metadata.includeDate   ? 'on' : 'off'),
+      time:   !!metadata.includeTime   === natural.includeTime   ? 'auto' : (metadata.includeTime   ? 'on' : 'off'),
+    };
+  } else {
+    overrideModes = { prefix: 'auto', date: 'auto', time: 'auto' };
+  }
+  refreshTogglePills();
+  updatePreview();
+}
+
+function updateSelectionStatus(status) {
+  const el = $('selection-status');
+  const lbl = $('apply-label');
+  if (status.hasSelection) {
+    el.classList.remove('empty');
+    let badge = '';
+    if (status.metadata) {
+      badge = '<span class="sh-badge">' + status.metadata.locale + ' · ' + status.metadata.level + '</span>';
+    }
+    el.innerHTML = '<i class="ph ph-cursor-click sh-icon"></i><span class="sh-text">Reemplazará "' + status.nodeName + '"</span>' + badge;
+    if (status.metadata) applyMetadataToForm(status.metadata);
+    lbl.textContent = 'Aplicar al text layer';
+  } else {
+    el.classList.add('empty');
+    el.innerHTML = '<i class="ph ph-cursor-click sh-icon"></i><span class="sh-text">Sin selección. Se creará un text layer nuevo.</span>';
+    lbl.textContent = 'Crear text layer nuevo';
+  }
+}
+
+// Definición selectors (Tipo + Versión)
+document.querySelectorAll('#modos-deftype .modo-btn').forEach(b => {
+  b.addEventListener('click', () => {
+    currentDefType = b.dataset.deftype;
+    // If switching to Caption while V2 was selected, fall back to V1
+    if (currentDefType === 'caption' && currentDefVersion === 'v2') {
+      currentDefVersion = 'v1';
+    }
+    refreshDefSelectors();
+    refreshTogglePills();  // recompute layout (V2 DE participle moves prefix to end)
+    updatePreview();
+  });
+});
+document.querySelectorAll('#modos-defversion .modo-btn').forEach(b => {
+  b.addEventListener('click', () => {
+    if (b.disabled) return;
+    currentDefVersion = b.dataset.defversion;
+    refreshDefSelectors();
+    refreshTogglePills();
+    updatePreview();
+  });
+});
+
+// Domain segmented control
+document.querySelectorAll('#domain-modos .modo-btn').forEach(b => {
+  b.addEventListener('click', () => setDomain(b.dataset.domain));
+});
+
+// Scrubber stops (and labels — clicking a label also picks the level)
+document.querySelectorAll('.scrubber-stop').forEach(b => {
+  b.addEventListener('click', () => setLevel(b.dataset.level));
+});
+document.querySelectorAll('#scrubber-labels span').forEach(s => {
+  s.addEventListener('click', () => setLevel(s.dataset.level));
+  s.style.cursor = 'pointer';
+});
+
+// Keyboard nav on scrubber
+$('scrubber-track').addEventListener('keydown', (e) => {
+  const levels = Object.keys(LEVEL_LABELS);
+  const idx = levels.indexOf(currentLevelId);
+  if (e.key === 'ArrowLeft' && idx > 0) {
+    e.preventDefault();
+    setLevel(levels[idx - 1]);
+  } else if (e.key === 'ArrowRight' && idx < levels.length - 1) {
+    e.preventDefault();
+    setLevel(levels[idx + 1]);
+  }
+});
+$('scrubber-track').setAttribute('tabindex', '0');
+
+// Override 3-state segments
+document.querySelectorAll('.comp-row-controls .modo-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const block = btn.dataset.block;
+    const mode = btn.dataset.mode;
+    if (!block || !mode) return;
+    overrideModes[block] = mode;
+    refreshTogglePills();
+    updatePreview();
+  });
+});
+
+// Reset overrides to natural
+$('reset-overrides').addEventListener('click', () => {
+  resetOverridesToNatural();
+  updatePreview();
+});
+['referenceDate','timeStart','timeEnd'].forEach((id) => {
+  $(id).addEventListener('input', updatePreview);
+  $(id).addEventListener('change', updatePreview);
+});
+$('now-btn').addEventListener('click', resetToNow);
+$('regen-btn').addEventListener('click', regenerateForCurrentLevel);
+
+$('apply').addEventListener('click', () => {
+  const inputs = getInputs();
+  const output = compose(inputs);
+  parent.postMessage({
+    pluginMessage: Object.assign({ type: 'apply', output }, inputs),
+  }, '*');
+});
+
+window.onmessage = (event) => {
+  const msg = event.data.pluginMessage;
+  if (!msg) return;
+  if (msg.type === 'selection-status') updateSelectionStatus(msg.status);
+};
+
+// Init
+function init() {
+  setOperadora('es-ES');
+  refreshDefSelectors();
+  resetOverridesToNatural();
+  setLevel(currentLevelId); // applies scrubber visuals + regenerates date
+  parent.postMessage({ pluginMessage: { type: 'ready' } }, '*');
+}
+init();
+</script>
+</body>
+</html>
