@@ -100,7 +100,8 @@ body { margin: 0; font-family: var(--m-font); font-size: var(--m-fs-body); line-
 .appbar .logo .xd-logo { color: #fff; }
 .appbar .crumb { font-size: 16px; font-weight: 700; letter-spacing: -.01em; }
 .appbar .spacer { flex: 1; }
-.appbar .appbar-meta { font-size: 13px; color: rgba(255,255,255,.85); font-weight: 400; }
+.appbar .meta-pill { font-size: 12px; background: rgba(255,255,255,.16); padding: 4px 10px; border-radius: 999px; display: inline-flex; gap: 6px; align-items: center; color: #fff; }
+.appbar .meta-pill .ph { color: #fff; font-size: 14px; }
 
 /* Hero: bloque h1 + descripción bajo el appbar */
 .hero { padding: 32px 0 16px; border-bottom: 1px solid var(--m-border-m); margin-bottom: 0; }
@@ -842,7 +843,8 @@ details[open] summary { margin-bottom: 8px; }
   </span>
   <span class="crumb">Date format</span>
   <span class="spacer"></span>
-  <span class="appbar-meta">Actualizado a 28 del 06 de 2026</span>
+  <span class="meta-pill"><i class="ph ph-calendar-blank"></i>2026-06-25</span>
+  <span class="meta-pill"><i class="ph ph-user-circle"></i>XD — Entertainment Telefónica</span>
 </header>
 
 <div class="container">
@@ -936,15 +938,15 @@ details[open] summary { margin-bottom: 8px; }
           <td class="col-detail set-grab"><span class="tk tk-prefix">Grabado</span> <span class="tk tk-date">10 diciembre</span></td>
           <td class="col-sg set-grab"><span class="tk tk-prefix">Grabado</span> <span class="tk tk-date">10 diciembre</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td></tr>
         <tr><td class="level col-nivel">Pasado 2-7 días</td>
-          <td class="col-caption"><span class="tk tk-u7d">U7D</span> <span class="tk tk-date">Jue. 10</span></td>
-          <td class="col-default set-est"><span class="tk tk-prefix">Emitido</span> <span class="tk tk-date">jueves 10</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
-          <td class="col-detail set-est"><span class="tk tk-u7d">U7D</span> <span class="tk tk-prefix">Emitido</span> <span class="tk tk-date">jueves 10</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
-          <td class="col-sg set-est"><span class="tk tk-prefix">Emitido</span> <span class="tk tk-date">jueves 10</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td>
-          <td class="col-default set-grab"><span class="tk tk-prefix">Grabado</span> <span class="tk tk-date">jueves 10</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
-          <td class="col-detail set-grab"><span class="tk tk-prefix">Grabado</span> <span class="tk tk-date">jueves 10</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
-          <td class="col-sg set-grab"><span class="tk tk-prefix">Grabado</span> <span class="tk tk-date">jueves 10</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td></tr>
+          <td class="col-caption"><span class="tk tk-u7d">U7D</span> <span class="tk tk-date">jue. 10</span></td>
+          <td class="col-default set-est"><span class="tk tk-prefix">Emitido</span> <span class="tk tk-date">jueves</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-detail set-est"><span class="tk tk-u7d">U7D</span> <span class="tk tk-prefix">Emitido</span> <span class="tk tk-date">jueves</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-sg set-est"><span class="tk tk-prefix">Emitido</span> <span class="tk tk-date">jueves</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td>
+          <td class="col-default set-grab"><span class="tk tk-prefix">Grabado</span> <span class="tk tk-date">jueves</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-detail set-grab"><span class="tk tk-prefix">Grabado</span> <span class="tk tk-date">jueves</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-sg set-grab"><span class="tk tk-prefix">Grabado</span> <span class="tk tk-date">jueves</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td></tr>
         <tr><td class="level col-nivel">Pasado Ayer</td>
-          <td class="col-caption"><span class="tk tk-u7d">U7D</span> <span class="tk tk-date">Ayer</span></td>
+          <td class="col-caption"><span class="tk tk-u7d">U7D</span> <span class="tk tk-date">ayer</span></td>
           <td class="col-default set-est"><span class="tk tk-prefix">Emitido</span> <span class="tk tk-date">ayer</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-detail set-est"><span class="tk tk-u7d">U7D</span> <span class="tk tk-prefix">Emitido</span> <span class="tk tk-date">ayer</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-sg set-est"><span class="tk tk-prefix">Emitido</span> <span class="tk tk-date">ayer</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td>
@@ -952,7 +954,7 @@ details[open] summary { margin-bottom: 8px; }
           <td class="col-detail set-grab"><span class="tk tk-prefix">Grabado</span> <span class="tk tk-date">ayer</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-sg set-grab"><span class="tk tk-prefix">Grabado</span> <span class="tk tk-date">ayer</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td></tr>
         <tr><td class="level col-nivel">Pasado Hoy</td>
-          <td class="col-caption"><span class="tk tk-u7d">U7D</span> <span class="tk tk-date">Hoy</span></td>
+          <td class="col-caption"><span class="tk tk-u7d">U7D</span> <span class="tk tk-date">hoy</span></td>
           <td class="col-default set-est"><span class="tk tk-prefix">Emitido</span> <span class="tk tk-date">hoy</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-detail set-est"><span class="tk tk-u7d">U7D</span> <span class="tk tk-prefix">Emitido</span> <span class="tk tk-date">hoy</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-sg set-est"><span class="tk tk-prefix">Emitido</span> <span class="tk tk-date">hoy</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td>
@@ -962,17 +964,17 @@ details[open] summary { margin-bottom: 8px; }
         <tr><td class="level col-nivel">Directo</td>
           <td class="col-caption"><span class="tk-spec">[Timeline]</span></td>
           <td class="col-default set-est"><span class="tk tk-prefix">En emisión</span><span class="tk tk-comma">,</span> <span class="tk tk-time">22:00 - 00:50</span></td>
-          <td class="col-detail set-est"><span class="tk tk-icon"><i class="ph ph-broadcast"></i></span> <span class="tk tk-prefix">En emisión</span></td>
-          <td class="col-sg set-est"><span class="tk tk-icon"><i class="ph ph-broadcast"></i></span> <span class="tk tk-prefix">En emisión</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td>
+          <td class="col-detail set-est"><span class="tk tk-icon"><i class="ph ph-broadcast"></i></span> <span class="tk tk-prefix">En emisión</span><br><span class="cite">time fuera del string → <span class="tk tk-progress"><span class="bar"></span>00:50/00:50</span> en el CTA</span></td>
+          <td class="col-sg set-est"><span class="tk tk-icon"><i class="ph ph-broadcast"></i></span> <span class="tk tk-prefix">En emisión</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span><br><span class="cite">time fuera del string → <span class="tk tk-progress"><span class="bar"></span>00:50/00:50</span> en el CTA</span></td>
           <td class="col-default set-grab"><span class="tk tk-prefix">Grabando</span><span class="tk tk-comma">,</span> <span class="tk tk-time">22:00 - 00:50</span></td>
-          <td class="col-detail set-grab"><span class="tk tk-rec"><span class="dot"></span></span> <span class="tk tk-prefix">Grabando</span></td>
-          <td class="col-sg set-grab"><span class="tk tk-rec"><span class="dot"></span></span> <span class="tk tk-prefix">Grabando</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td></tr>
+          <td class="col-detail set-grab"><span class="tk tk-rec"><span class="dot"></span></span> <span class="tk tk-prefix">Grabando</span><br><span class="cite">time fuera del string → <span class="tk tk-progress"><span class="bar"></span>00:50/00:50</span> en el CTA</span></td>
+          <td class="col-sg set-grab"><span class="tk tk-rec"><span class="dot"></span></span> <span class="tk tk-prefix">Grabando</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span><br><span class="cite">time fuera del string → <span class="tk tk-progress"><span class="bar"></span>00:50/00:50</span> en el CTA</span></td></tr>
         <tr><td class="level col-nivel">Futuro Hoy</td>
           <td class="col-caption"><span class="tk tk-date">Hoy</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-default set-est"><span class="tk tk-date">Hoy</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-detail set-est"><span class="tk tk-date">Hoy</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-sg set-est"><span class="tk tk-date">Hoy</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td>
-          <td class="col-default set-grab"><span class="tk tk-prefix">Programado</span> <span class="tk tk-date">Hoy</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-default set-grab"><span class="tk tk-prefix">Programado</span> <span class="tk tk-date">hoy</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-detail set-grab"><span class="tk tk-badge">Programado</span> <span class="tk tk-date">Hoy</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-sg set-grab"><span class="tk tk-badge">Programado</span> <span class="tk tk-date">Hoy</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td></tr>
         <tr><td class="level col-nivel">Futuro Mañana</td>
@@ -980,17 +982,17 @@ details[open] summary { margin-bottom: 8px; }
           <td class="col-default set-est"><span class="tk tk-date">Mañana</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-detail set-est"><span class="tk tk-badge tk-badge-coming"><i class="ph ph-clock"></i>Próximamente</span> <span class="tk tk-date">Mañana</span><span class="tk tk-comma">,</span> <span class="tk tk-time">22:00</span></td>
           <td class="col-sg set-est"><span class="tk tk-badge tk-badge-coming"><i class="ph ph-clock"></i>Próximamente</span> <span class="tk tk-date">Mañana</span><span class="tk tk-comma">,</span> <span class="tk tk-time">22:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td>
-          <td class="col-default set-grab"><span class="tk tk-prefix">Programado</span> <span class="tk tk-date">Mañana</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-default set-grab"><span class="tk tk-prefix">Programado</span> <span class="tk tk-date">mañana</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-detail set-grab"><span class="tk tk-badge">Programado</span> <span class="tk tk-date">Mañana</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-sg set-grab"><span class="tk tk-badge">Programado</span> <span class="tk tk-date">Mañana</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td></tr>
         <tr><td class="level col-nivel">Futuro 2-7 días</td>
           <td class="col-caption"><span class="tk tk-date">Jueves 10</span></td>
-          <td class="col-default set-est"><span class="tk tk-date">Jueves 10</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
-          <td class="col-detail set-est"><span class="tk tk-badge tk-badge-coming"><i class="ph ph-clock"></i>Próximamente</span> <span class="tk tk-date">Jueves 10</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
-          <td class="col-sg set-est"><span class="tk tk-badge tk-badge-coming"><i class="ph ph-clock"></i>Próximamente</span> <span class="tk tk-date">Jueves 10</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td>
-          <td class="col-default set-grab"><span class="tk tk-prefix">Programado</span> <span class="tk tk-date">jueves 10</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
-          <td class="col-detail set-grab"><span class="tk tk-badge">Programado</span> <span class="tk tk-date">Jueves 10</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
-          <td class="col-sg set-grab"><span class="tk tk-badge">Programado</span> <span class="tk tk-date">Jueves 10</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td></tr>
+          <td class="col-default set-est"><span class="tk tk-date">Jueves</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-detail set-est"><span class="tk tk-badge tk-badge-coming"><i class="ph ph-clock"></i>Próximamente</span> <span class="tk tk-date">Jueves</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-sg set-est"><span class="tk tk-badge tk-badge-coming"><i class="ph ph-clock"></i>Próximamente</span> <span class="tk tk-date">Jueves</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td>
+          <td class="col-default set-grab"><span class="tk tk-prefix">Programado</span> <span class="tk tk-date">jueves</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-detail set-grab"><span class="tk tk-badge">Programado</span> <span class="tk tk-date">Jueves</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-sg set-grab"><span class="tk tk-badge">Programado</span> <span class="tk tk-date">Jueves</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td></tr>
         <tr><td class="level col-nivel">Futuro +7 días</td>
           <td class="col-caption"><span class="tk tk-date">10 diciembre</span></td>
           <td class="col-default set-est"><span class="tk tk-date">10 diciembre</span></td>
@@ -1044,12 +1046,12 @@ details[open] summary { margin-bottom: 8px; }
           <td class="col-sg set-grab"><span class="tk tk-prefix">Grabado</span> <span class="tk tk-date">10 diciembre</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td></tr>
         <tr><td class="level col-nivel">Pasado 2-7 días</td>
           <td class="col-caption"><span class="tk tk-prefix">Emitido</span> <span class="tk tk-date">jue. 10</span></td>
-          <td class="col-default set-est"><span class="tk tk-prefix">Emitido</span> <span class="tk tk-date">jueves 10</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
-          <td class="col-detail set-est"><span class="tk tk-prefix">Emitido</span> <span class="tk tk-date">jueves 10</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
-          <td class="col-sg set-est"><span class="tk tk-prefix">Emitido</span> <span class="tk tk-date">jueves 10</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td>
-          <td class="col-default set-grab"><span class="tk tk-prefix">Grabado</span> <span class="tk tk-date">jueves 10</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
-          <td class="col-detail set-grab"><span class="tk tk-prefix">Grabado</span> <span class="tk tk-date">jueves 10</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
-          <td class="col-sg set-grab"><span class="tk tk-prefix">Grabado</span> <span class="tk tk-date">jueves 10</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td></tr>
+          <td class="col-default set-est"><span class="tk tk-prefix">Emitido</span> <span class="tk tk-date">jueves</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-detail set-est"><span class="tk tk-prefix">Emitido</span> <span class="tk tk-date">jueves</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-sg set-est"><span class="tk tk-prefix">Emitido</span> <span class="tk tk-date">jueves</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td>
+          <td class="col-default set-grab"><span class="tk tk-prefix">Grabado</span> <span class="tk tk-date">jueves</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-detail set-grab"><span class="tk tk-prefix">Grabado</span> <span class="tk tk-date">jueves</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-sg set-grab"><span class="tk tk-prefix">Grabado</span> <span class="tk tk-date">jueves</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td></tr>
         <tr><td class="level col-nivel">Pasado Ayer</td>
           <td class="col-caption"><span class="tk tk-prefix">Emitido</span> <span class="tk tk-date">ayer</span></td>
           <td class="col-default set-est"><span class="tk tk-prefix">Emitido</span> <span class="tk tk-date">ayer</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
@@ -1069,17 +1071,17 @@ details[open] summary { margin-bottom: 8px; }
         <tr><td class="level col-nivel">Directo</td>
           <td class="col-caption"><span class="tk-spec">[Timeline]</span></td>
           <td class="col-default set-est"><span class="tk tk-prefix">En emisión</span><span class="tk tk-comma">,</span> <span class="tk tk-time">22:00 - 00:50</span></td>
-          <td class="col-detail set-est"><span class="tk tk-icon"><i class="ph ph-broadcast"></i></span> <span class="tk tk-prefix">En emisión</span></td>
-          <td class="col-sg set-est"><span class="tk tk-icon"><i class="ph ph-broadcast"></i></span> <span class="tk tk-prefix">En emisión</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td>
+          <td class="col-detail set-est"><span class="tk tk-icon"><i class="ph ph-broadcast"></i></span> <span class="tk tk-prefix">En emisión</span><br><span class="cite">time fuera del string → <span class="tk tk-progress"><span class="bar"></span>00:50/00:50</span> en el CTA</span></td>
+          <td class="col-sg set-est"><span class="tk tk-icon"><i class="ph ph-broadcast"></i></span> <span class="tk tk-prefix">En emisión</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span><br><span class="cite">time fuera del string → <span class="tk tk-progress"><span class="bar"></span>00:50/00:50</span> en el CTA</span></td>
           <td class="col-default set-grab"><span class="tk tk-prefix">Grabando</span><span class="tk tk-comma">,</span> <span class="tk tk-time">22:00 - 00:50</span></td>
-          <td class="col-detail set-grab"><span class="tk tk-rec"><span class="dot"></span></span> <span class="tk tk-prefix">Grabando</span></td>
-          <td class="col-sg set-grab"><span class="tk tk-rec"><span class="dot"></span></span> <span class="tk tk-prefix">Grabando</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td></tr>
+          <td class="col-detail set-grab"><span class="tk tk-rec"><span class="dot"></span></span> <span class="tk tk-prefix">Grabando</span><br><span class="cite">time fuera del string → <span class="tk tk-progress"><span class="bar"></span>00:50/00:50</span> en el CTA</span></td>
+          <td class="col-sg set-grab"><span class="tk tk-rec"><span class="dot"></span></span> <span class="tk tk-prefix">Grabando</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span><br><span class="cite">time fuera del string → <span class="tk tk-progress"><span class="bar"></span>00:50/00:50</span> en el CTA</span></td></tr>
         <tr><td class="level col-nivel">Futuro Hoy</td>
           <td class="col-caption"><span class="tk tk-date">Hoy</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-default set-est"><span class="tk tk-date">Hoy</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-detail set-est"><span class="tk tk-date">Hoy</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-sg set-est"><span class="tk tk-date">Hoy</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td>
-          <td class="col-default set-grab"><span class="tk tk-prefix">Programado</span> <span class="tk tk-date">Hoy</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-default set-grab"><span class="tk tk-prefix">Programado</span> <span class="tk tk-date">hoy</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-detail set-grab"><span class="tk tk-badge">Programado</span> <span class="tk tk-date">Hoy</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-sg set-grab"><span class="tk tk-badge">Programado</span> <span class="tk tk-date">Hoy</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td></tr>
         <tr><td class="level col-nivel">Futuro Mañana</td>
@@ -1087,17 +1089,17 @@ details[open] summary { margin-bottom: 8px; }
           <td class="col-default set-est"><span class="tk tk-date">Mañana</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-detail set-est"><span class="tk tk-badge tk-badge-coming"><i class="ph ph-clock"></i>Próximamente</span> <span class="tk tk-date">Mañana</span><span class="tk tk-comma">,</span> <span class="tk tk-time">22:00</span></td>
           <td class="col-sg set-est"><span class="tk tk-badge tk-badge-coming"><i class="ph ph-clock"></i>Próximamente</span> <span class="tk tk-date">Mañana</span><span class="tk tk-comma">,</span> <span class="tk tk-time">22:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td>
-          <td class="col-default set-grab"><span class="tk tk-prefix">Programado</span> <span class="tk tk-date">Mañana</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-default set-grab"><span class="tk tk-prefix">Programado</span> <span class="tk tk-date">mañana</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-detail set-grab"><span class="tk tk-badge">Programado</span> <span class="tk tk-date">Mañana</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-sg set-grab"><span class="tk tk-badge">Programado</span> <span class="tk tk-date">Mañana</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td></tr>
         <tr><td class="level col-nivel">Futuro 2-7 días</td>
           <td class="col-caption"><span class="tk tk-date">Jueves 10</span></td>
-          <td class="col-default set-est"><span class="tk tk-date">Jueves 10</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
-          <td class="col-detail set-est"><span class="tk tk-badge tk-badge-coming"><i class="ph ph-clock"></i>Próximamente</span> <span class="tk tk-date">Jueves 10</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
-          <td class="col-sg set-est"><span class="tk tk-badge tk-badge-coming"><i class="ph ph-clock"></i>Próximamente</span> <span class="tk tk-date">Jueves 10</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td>
-          <td class="col-default set-grab"><span class="tk tk-prefix">Programado</span> <span class="tk tk-date">jueves 10</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
-          <td class="col-detail set-grab"><span class="tk tk-badge">Programado</span> <span class="tk tk-date">Jueves 10</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
-          <td class="col-sg set-grab"><span class="tk tk-badge">Programado</span> <span class="tk tk-date">Jueves 10</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td></tr>
+          <td class="col-default set-est"><span class="tk tk-date">Jueves</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-detail set-est"><span class="tk tk-badge tk-badge-coming"><i class="ph ph-clock"></i>Próximamente</span> <span class="tk tk-date">Jueves</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-sg set-est"><span class="tk tk-badge tk-badge-coming"><i class="ph ph-clock"></i>Próximamente</span> <span class="tk tk-date">Jueves</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td>
+          <td class="col-default set-grab"><span class="tk tk-prefix">Programado</span> <span class="tk tk-date">jueves</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-detail set-grab"><span class="tk tk-badge">Programado</span> <span class="tk tk-date">Jueves</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-sg set-grab"><span class="tk tk-badge">Programado</span> <span class="tk tk-date">Jueves</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td></tr>
         <tr><td class="level col-nivel">Futuro +7 días</td>
           <td class="col-caption"><span class="tk tk-date">10 diciembre</span></td>
           <td class="col-default set-est"><span class="tk tk-date">10 diciembre</span></td>
@@ -1151,12 +1153,12 @@ details[open] summary { margin-bottom: 8px; }
           <td class="col-sg set-grab"><span class="tk tk-prefix">Gravado</span> <span class="tk tk-date">10 dezembro</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td></tr>
         <tr><td class="level col-nivel">Pasado 2-7 días</td>
           <td class="col-caption"><span class="tk tk-prefix">Exibido</span> <span class="tk tk-date">qui, 10</span></td>
-          <td class="col-default set-est"><span class="tk tk-prefix">Exibido</span> <span class="tk tk-date">quinta 10</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
-          <td class="col-detail set-est"><span class="tk tk-prefix">Exibido</span> <span class="tk tk-date">quinta 10</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
-          <td class="col-sg set-est"><span class="tk tk-prefix">Exibido</span> <span class="tk tk-date">quinta 10</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td>
-          <td class="col-default set-grab"><span class="tk tk-prefix">Gravado</span> <span class="tk tk-date">quinta 10</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
-          <td class="col-detail set-grab"><span class="tk tk-prefix">Gravado</span> <span class="tk tk-date">quinta 10</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
-          <td class="col-sg set-grab"><span class="tk tk-prefix">Gravado</span> <span class="tk tk-date">quinta 10</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td></tr>
+          <td class="col-default set-est"><span class="tk tk-prefix">Exibido</span> <span class="tk tk-date">quinta</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-detail set-est"><span class="tk tk-prefix">Exibido</span> <span class="tk tk-date">quinta</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-sg set-est"><span class="tk tk-prefix">Exibido</span> <span class="tk tk-date">quinta</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td>
+          <td class="col-default set-grab"><span class="tk tk-prefix">Gravado</span> <span class="tk tk-date">quinta</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-detail set-grab"><span class="tk tk-prefix">Gravado</span> <span class="tk tk-date">quinta</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-sg set-grab"><span class="tk tk-prefix">Gravado</span> <span class="tk tk-date">quinta</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td></tr>
         <tr><td class="level col-nivel">Pasado Ayer</td>
           <td class="col-caption"><span class="tk tk-prefix">Exibido</span> <span class="tk tk-date">ontem</span></td>
           <td class="col-default set-est"><span class="tk tk-prefix">Exibido</span> <span class="tk tk-date">ontem</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
@@ -1175,18 +1177,18 @@ details[open] summary { margin-bottom: 8px; }
           <td class="col-sg set-grab"><span class="tk tk-prefix">Gravado</span> <span class="tk tk-date">hoje</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td></tr>
         <tr><td class="level col-nivel">Directo</td>
           <td class="col-caption"><span class="tk-spec">[Timeline]</span></td>
-          <td class="col-default set-est"><span class="tk tk-prefix">Agora</span><span class="tk tk-comma">,</span> <span class="tk tk-time">22:00 - 00:50</span></td>
-          <td class="col-detail set-est"><span class="tk tk-icon"><i class="ph ph-broadcast"></i></span> <span class="tk tk-prefix">Agora</span></td>
-          <td class="col-sg set-est"><span class="tk tk-icon"><i class="ph ph-broadcast"></i></span> <span class="tk tk-prefix">Agora</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td>
+          <td class="col-default set-est"><span class="tk tk-prefix">Ao vivo</span><span class="tk tk-comma">,</span> <span class="tk tk-time">22:00 - 00:50</span></td>
+          <td class="col-detail set-est"><span class="tk tk-icon"><i class="ph ph-broadcast"></i></span> <span class="tk tk-prefix">Ao vivo</span><br><span class="cite">time fuera del string → <span class="tk tk-progress"><span class="bar"></span>00:50/00:50</span> en el CTA</span></td>
+          <td class="col-sg set-est"><span class="tk tk-icon"><i class="ph ph-broadcast"></i></span> <span class="tk tk-prefix">Ao vivo</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span><br><span class="cite">time fuera del string → <span class="tk tk-progress"><span class="bar"></span>00:50/00:50</span> en el CTA</span></td>
           <td class="col-default set-grab"><span class="tk tk-prefix">Gravando</span><span class="tk tk-comma">,</span> <span class="tk tk-time">22:00 - 00:50</span></td>
-          <td class="col-detail set-grab"><span class="tk tk-rec"><span class="dot"></span></span> <span class="tk tk-prefix">Gravando</span></td>
-          <td class="col-sg set-grab"><span class="tk tk-rec"><span class="dot"></span></span> <span class="tk tk-prefix">Gravando</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td></tr>
+          <td class="col-detail set-grab"><span class="tk tk-rec"><span class="dot"></span></span> <span class="tk tk-prefix">Gravando</span><br><span class="cite">time fuera del string → <span class="tk tk-progress"><span class="bar"></span>00:50/00:50</span> en el CTA</span></td>
+          <td class="col-sg set-grab"><span class="tk tk-rec"><span class="dot"></span></span> <span class="tk tk-prefix">Gravando</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span><br><span class="cite">time fuera del string → <span class="tk tk-progress"><span class="bar"></span>00:50/00:50</span> en el CTA</span></td></tr>
         <tr><td class="level col-nivel">Futuro Hoy</td>
           <td class="col-caption"><span class="tk tk-date">Hoje</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-default set-est"><span class="tk tk-date">Hoje</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-detail set-est"><span class="tk tk-date">Hoje</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-sg set-est"><span class="tk tk-date">Hoje</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td>
-          <td class="col-default set-grab"><span class="tk tk-prefix">Agendado</span> <span class="tk tk-date">Hoje</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-default set-grab"><span class="tk tk-prefix">Agendado</span> <span class="tk tk-date">hoje</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-detail set-grab"><span class="tk tk-badge">Agendado</span> <span class="tk tk-date">Hoje</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-sg set-grab"><span class="tk tk-badge">Agendado</span> <span class="tk tk-date">Hoje</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td></tr>
         <tr><td class="level col-nivel">Futuro Mañana</td>
@@ -1194,17 +1196,17 @@ details[open] summary { margin-bottom: 8px; }
           <td class="col-default set-est"><span class="tk tk-date">Amanhã</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-detail set-est"><span class="tk tk-badge tk-badge-coming"><i class="ph ph-clock"></i>Em breve</span> <span class="tk tk-date">Amanhã</span><span class="tk tk-comma">,</span> <span class="tk tk-time">22:00</span></td>
           <td class="col-sg set-est"><span class="tk tk-badge tk-badge-coming"><i class="ph ph-clock"></i>Em breve</span> <span class="tk tk-date">Amanhã</span><span class="tk tk-comma">,</span> <span class="tk tk-time">22:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td>
-          <td class="col-default set-grab"><span class="tk tk-prefix">Agendado</span> <span class="tk tk-date">Amanhã</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-default set-grab"><span class="tk tk-prefix">Agendado</span> <span class="tk tk-date">amanhã</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-detail set-grab"><span class="tk tk-badge">Agendado</span> <span class="tk tk-date">Amanhã</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-sg set-grab"><span class="tk tk-badge">Agendado</span> <span class="tk tk-date">Amanhã</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td></tr>
         <tr><td class="level col-nivel">Futuro 2-7 días</td>
           <td class="col-caption"><span class="tk tk-date">Quinta 10</span></td>
-          <td class="col-default set-est"><span class="tk tk-date">Quinta 10</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
-          <td class="col-detail set-est"><span class="tk tk-badge tk-badge-coming"><i class="ph ph-clock"></i>Em breve</span> <span class="tk tk-date">Quinta 10</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
-          <td class="col-sg set-est"><span class="tk tk-badge tk-badge-coming"><i class="ph ph-clock"></i>Em breve</span> <span class="tk tk-date">Quinta 10</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td>
-          <td class="col-default set-grab"><span class="tk tk-prefix">Agendado</span> <span class="tk tk-date">quinta 10</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
-          <td class="col-detail set-grab"><span class="tk tk-badge">Agendado</span> <span class="tk tk-date">Quinta 10</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
-          <td class="col-sg set-grab"><span class="tk tk-badge">Agendado</span> <span class="tk tk-date">Quinta 10</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td></tr>
+          <td class="col-default set-est"><span class="tk tk-date">Quinta</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-detail set-est"><span class="tk tk-badge tk-badge-coming"><i class="ph ph-clock"></i>Em breve</span> <span class="tk tk-date">Quinta</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-sg set-est"><span class="tk tk-badge tk-badge-coming"><i class="ph ph-clock"></i>Em breve</span> <span class="tk tk-date">Quinta</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td>
+          <td class="col-default set-grab"><span class="tk tk-prefix">Agendado</span> <span class="tk tk-date">quinta</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-detail set-grab"><span class="tk tk-badge">Agendado</span> <span class="tk tk-date">Quinta</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-sg set-grab"><span class="tk tk-badge">Agendado</span> <span class="tk tk-date">Quinta</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">T2 Ep12 Primera vez…</span></td></tr>
         <tr><td class="level col-nivel">Futuro +7 días</td>
           <td class="col-caption"><span class="tk tk-date">10 dezembro</span></td>
           <td class="col-default set-est"><span class="tk tk-date">10 dezembro</span></td>
@@ -1240,59 +1242,59 @@ details[open] summary { margin-bottom: 8px; }
       </thead>
       <tbody>
         <tr class="row-disabled"><td class="level col-nivel">Pasado +1 año</td>
-          <td class="col-caption"><span class="tk tk-date">10.12.25</span> <span class="tk tk-prefix">gesendet</span></td>
-          <td class="col-default set-est"><span class="tk tk-prefix">Gesendet</span> <span class="tk tk-date">10.12.25</span></td>
-          <td class="col-detail set-est"><span class="tk tk-prefix">Gesendet</span> <span class="tk tk-date">10.12.25</span></td>
-          <td class="col-sg set-est"><span class="tk tk-prefix">Gesendet</span> <span class="tk tk-date">10.12.25</span><span class="tk tk-comma">:</span> <span class="tk tk-content">S2 Ep12 Erstes Mal in NYC…</span></td>
-          <td class="col-default set-grab"><span class="tk tk-prefix">Aufgenommen</span> <span class="tk tk-date">10.12.25</span></td>
-          <td class="col-detail set-grab"><span class="tk tk-prefix">Aufgenommen</span> <span class="tk tk-date">10.12.25</span></td>
-          <td class="col-sg set-grab"><span class="tk tk-prefix">Aufgenommen</span> <span class="tk tk-date">10.12.25</span><span class="tk tk-comma">:</span> <span class="tk tk-content">S2 Ep12 Erstes Mal in NYC…</span></td></tr>
+          <td class="col-caption"><span class="tk tk-prefix">Gesendet am</span> <span class="tk tk-date">10.12.25</span></td>
+          <td class="col-default set-est"><span class="tk tk-prefix">Gesendet am</span> <span class="tk tk-date">10.12.25</span></td>
+          <td class="col-detail set-est"><span class="tk tk-prefix">Gesendet am</span> <span class="tk tk-date">10.12.25</span></td>
+          <td class="col-sg set-est"><span class="tk tk-date">10.12.25</span><span class="tk tk-comma">:</span> <span class="tk tk-content">S2 Ep12 Erstes Mal in NYC…</span> <span class="tk tk-prefix">gesendet</span></td>
+          <td class="col-default set-grab"><span class="tk tk-prefix">Aufgenommen am</span> <span class="tk tk-date">10.12.25</span></td>
+          <td class="col-detail set-grab"><span class="tk tk-prefix">Aufgenommen am</span> <span class="tk tk-date">10.12.25</span></td>
+          <td class="col-sg set-grab"><span class="tk tk-date">10.12.25</span><span class="tk tk-comma">:</span> <span class="tk tk-content">S2 Ep12 Erstes Mal in NYC…</span> <span class="tk tk-prefix">aufgenommen</span></td></tr>
         <tr class="row-disabled"><td class="level col-nivel">Pasado +7 días</td>
-          <td class="col-caption"><span class="tk tk-date">10. Dez.</span> <span class="tk tk-prefix">gesendet</span></td>
-          <td class="col-default set-est"><span class="tk tk-prefix">Gesendet</span> <span class="tk tk-date">10. Dezember</span></td>
-          <td class="col-detail set-est"><span class="tk tk-prefix">Gesendet</span> <span class="tk tk-date">10. Dezember</span></td>
-          <td class="col-sg set-est"><span class="tk tk-prefix">Gesendet</span> <span class="tk tk-date">10. Dezember</span><span class="tk tk-comma">:</span> <span class="tk tk-content">S2 Ep12 Erstes Mal in NYC…</span></td>
-          <td class="col-default set-grab"><span class="tk tk-prefix">Aufgenommen</span> <span class="tk tk-date">10. Dezember</span></td>
-          <td class="col-detail set-grab"><span class="tk tk-prefix">Aufgenommen</span> <span class="tk tk-date">10. Dezember</span></td>
-          <td class="col-sg set-grab"><span class="tk tk-prefix">Aufgenommen</span> <span class="tk tk-date">10. Dezember</span><span class="tk tk-comma">:</span> <span class="tk tk-content">S2 Ep12 Erstes Mal in NYC…</span></td></tr>
+          <td class="col-caption"><span class="tk tk-prefix">Gesendet am</span> <span class="tk tk-date">10. Dezember</span></td>
+          <td class="col-default set-est"><span class="tk tk-prefix">Gesendet am</span> <span class="tk tk-date">10. Dezember</span></td>
+          <td class="col-detail set-est"><span class="tk tk-prefix">Gesendet am</span> <span class="tk tk-date">10. Dezember</span></td>
+          <td class="col-sg set-est"><span class="tk tk-date">10. Dezember</span><span class="tk tk-comma">:</span> <span class="tk tk-content">S2 Ep12 Erstes Mal in NYC…</span> <span class="tk tk-prefix">gesendet</span></td>
+          <td class="col-default set-grab"><span class="tk tk-prefix">Aufgenommen am</span> <span class="tk tk-date">10. Dezember</span></td>
+          <td class="col-detail set-grab"><span class="tk tk-prefix">Aufgenommen am</span> <span class="tk tk-date">10. Dezember</span></td>
+          <td class="col-sg set-grab"><span class="tk tk-date">10. Dezember</span><span class="tk tk-comma">:</span> <span class="tk tk-content">S2 Ep12 Erstes Mal in NYC…</span> <span class="tk tk-prefix">aufgenommen</span></td></tr>
         <tr><td class="level col-nivel">Pasado 2-7 días</td>
-          <td class="col-caption"><span class="tk tk-date">Do., 10.</span> <span class="tk tk-prefix">gesendet</span></td>
-          <td class="col-default set-est"><span class="tk tk-prefix">Gesendet</span> <span class="tk tk-date">Donnerstag, 10.12.</span> <span class="tk tk-time">20:00</span></td>
-          <td class="col-detail set-est"><span class="tk tk-prefix">Gesendet</span> <span class="tk tk-date">Donnerstag, 10.12.</span> <span class="tk tk-time">20:00</span></td>
-          <td class="col-sg set-est"><span class="tk tk-prefix">Gesendet</span> <span class="tk tk-date">Donnerstag, 10.12.</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">S2 Ep12 Erstes Mal in NYC…</span></td>
-          <td class="col-default set-grab"><span class="tk tk-prefix">Aufgenommen</span> <span class="tk tk-date">Donnerstag, 10.12.</span> <span class="tk tk-time">20:00</span></td>
-          <td class="col-detail set-grab"><span class="tk tk-prefix">Aufgenommen</span> <span class="tk tk-date">Donnerstag, 10.12.</span> <span class="tk tk-time">20:00</span></td>
-          <td class="col-sg set-grab"><span class="tk tk-prefix">Aufgenommen</span> <span class="tk tk-date">Donnerstag, 10.12.</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">S2 Ep12 Erstes Mal in NYC…</span></td></tr>
+          <td class="col-caption"><span class="tk tk-prefix">Gesendet am</span> <span class="tk tk-date">Do., 10.</span></td>
+          <td class="col-default set-est"><span class="tk tk-prefix">Gesendet am</span> <span class="tk tk-date">Donnerstag</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-detail set-est"><span class="tk tk-prefix">Gesendet am</span> <span class="tk tk-date">Donnerstag</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-sg set-est"><span class="tk tk-date">Donnerstag</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">S2 Ep12 Erstes Mal in NYC…</span> <span class="tk tk-prefix">gesendet</span></td>
+          <td class="col-default set-grab"><span class="tk tk-prefix">Aufgenommen am</span> <span class="tk tk-date">Donnerstag</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-detail set-grab"><span class="tk tk-prefix">Aufgenommen am</span> <span class="tk tk-date">Donnerstag</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-sg set-grab"><span class="tk tk-date">Donnerstag</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">S2 Ep12 Erstes Mal in NYC…</span> <span class="tk tk-prefix">aufgenommen</span></td></tr>
         <tr><td class="level col-nivel">Pasado Ayer</td>
-          <td class="col-caption"><span class="tk tk-date">Gestern</span> <span class="tk tk-prefix">gesendet</span></td>
-          <td class="col-default set-est"><span class="tk tk-prefix">Gesendet</span> <span class="tk tk-date">gestern</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
-          <td class="col-detail set-est"><span class="tk tk-prefix">Gesendet</span> <span class="tk tk-date">gestern</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
-          <td class="col-sg set-est"><span class="tk tk-prefix">Gesendet</span> <span class="tk tk-date">gestern</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">S2 Ep12 Erstes Mal in NYC…</span></td>
-          <td class="col-default set-grab"><span class="tk tk-prefix">Aufgenommen</span> <span class="tk tk-date">gestern</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
-          <td class="col-detail set-grab"><span class="tk tk-prefix">Aufgenommen</span> <span class="tk tk-date">gestern</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
-          <td class="col-sg set-grab"><span class="tk tk-prefix">Aufgenommen</span> <span class="tk tk-date">gestern</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">S2 Ep12 Erstes Mal in NYC…</span></td></tr>
+          <td class="col-caption"><span class="tk tk-prefix">Gesendet am</span> <span class="tk tk-date">gestern</span></td>
+          <td class="col-default set-est"><span class="tk tk-prefix">Gesendet am</span> <span class="tk tk-date">gestern</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-detail set-est"><span class="tk tk-prefix">Gesendet am</span> <span class="tk tk-date">gestern</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-sg set-est"><span class="tk tk-date">gestern</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">S2 Ep12 Erstes Mal in NYC…</span> <span class="tk tk-prefix">gesendet</span></td>
+          <td class="col-default set-grab"><span class="tk tk-prefix">Aufgenommen am</span> <span class="tk tk-date">gestern</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-detail set-grab"><span class="tk tk-prefix">Aufgenommen am</span> <span class="tk tk-date">gestern</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-sg set-grab"><span class="tk tk-date">gestern</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">S2 Ep12 Erstes Mal in NYC…</span> <span class="tk tk-prefix">aufgenommen</span></td></tr>
         <tr><td class="level col-nivel">Pasado Hoy</td>
-          <td class="col-caption"><span class="tk tk-date">Heute</span> <span class="tk tk-prefix">gesendet</span></td>
-          <td class="col-default set-est"><span class="tk tk-prefix">Gesendet</span> <span class="tk tk-date">heute</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
-          <td class="col-detail set-est"><span class="tk tk-prefix">Gesendet</span> <span class="tk tk-date">heute</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
-          <td class="col-sg set-est"><span class="tk tk-prefix">Gesendet</span> <span class="tk tk-date">heute</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">S2 Ep12 Erstes Mal in NYC…</span></td>
-          <td class="col-default set-grab"><span class="tk tk-prefix">Aufgenommen</span> <span class="tk tk-date">heute</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
-          <td class="col-detail set-grab"><span class="tk tk-prefix">Aufgenommen</span> <span class="tk tk-date">heute</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
-          <td class="col-sg set-grab"><span class="tk tk-prefix">Aufgenommen</span> <span class="tk tk-date">heute</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">S2 Ep12 Erstes Mal in NYC…</span></td></tr>
+          <td class="col-caption"><span class="tk tk-prefix">Gesendet am</span> <span class="tk tk-date">heute</span></td>
+          <td class="col-default set-est"><span class="tk tk-prefix">Gesendet am</span> <span class="tk tk-date">heute</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-detail set-est"><span class="tk tk-prefix">Gesendet am</span> <span class="tk tk-date">heute</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-sg set-est"><span class="tk tk-date">heute</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">S2 Ep12 Erstes Mal in NYC…</span> <span class="tk tk-prefix">gesendet</span></td>
+          <td class="col-default set-grab"><span class="tk tk-prefix">Aufgenommen am</span> <span class="tk tk-date">heute</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-detail set-grab"><span class="tk tk-prefix">Aufgenommen am</span> <span class="tk tk-date">heute</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-sg set-grab"><span class="tk tk-date">heute</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">S2 Ep12 Erstes Mal in NYC…</span> <span class="tk tk-prefix">aufgenommen</span></td></tr>
         <tr><td class="level col-nivel">Directo</td>
           <td class="col-caption"><span class="tk-spec">[Timeline]</span></td>
           <td class="col-default set-est"><span class="tk tk-prefix">Jetzt</span><span class="tk tk-comma">,</span> <span class="tk tk-time">22:00 - 00:50</span></td>
-          <td class="col-detail set-est"><span class="tk tk-icon"><i class="ph ph-broadcast"></i></span> <span class="tk tk-prefix">Jetzt</span></td>
-          <td class="col-sg set-est"><span class="tk tk-icon"><i class="ph ph-broadcast"></i></span> <span class="tk tk-prefix">Jetzt</span><span class="tk tk-comma">:</span> <span class="tk tk-content">S2 Ep12 Erstes Mal in NYC…</span></td>
+          <td class="col-detail set-est"><span class="tk tk-icon"><i class="ph ph-broadcast"></i></span> <span class="tk tk-prefix">Jetzt</span><br><span class="cite">time fuera del string → <span class="tk tk-progress"><span class="bar"></span>00:50/00:50</span> en el CTA</span></td>
+          <td class="col-sg set-est"><span class="tk tk-icon"><i class="ph ph-broadcast"></i></span> <span class="tk tk-prefix">Jetzt</span><span class="tk tk-comma">:</span> <span class="tk tk-content">S2 Ep12 Erstes Mal in NYC…</span><br><span class="cite">time fuera del string → <span class="tk tk-progress"><span class="bar"></span>00:50/00:50</span> en el CTA</span></td>
           <td class="col-default set-grab"><span class="tk tk-prefix">Aufnahme</span><span class="tk tk-comma">,</span> <span class="tk tk-time">22:00 - 00:50</span></td>
-          <td class="col-detail set-grab"><span class="tk tk-rec"><span class="dot"></span></span> <span class="tk tk-prefix">Aufnahme</span></td>
-          <td class="col-sg set-grab"><span class="tk tk-rec"><span class="dot"></span></span> <span class="tk tk-prefix">Aufnahme</span><span class="tk tk-comma">:</span> <span class="tk tk-content">S2 Ep12 Erstes Mal in NYC…</span></td></tr>
+          <td class="col-detail set-grab"><span class="tk tk-rec"><span class="dot"></span></span> <span class="tk tk-prefix">Aufnahme</span><br><span class="cite">time fuera del string → <span class="tk tk-progress"><span class="bar"></span>00:50/00:50</span> en el CTA</span></td>
+          <td class="col-sg set-grab"><span class="tk tk-rec"><span class="dot"></span></span> <span class="tk tk-prefix">Aufnahme</span><span class="tk tk-comma">:</span> <span class="tk tk-content">S2 Ep12 Erstes Mal in NYC…</span><br><span class="cite">time fuera del string → <span class="tk tk-progress"><span class="bar"></span>00:50/00:50</span> en el CTA</span></td></tr>
         <tr><td class="level col-nivel">Futuro Hoy</td>
           <td class="col-caption"><span class="tk tk-date">Heute</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-default set-est"><span class="tk tk-date">Heute</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-detail set-est"><span class="tk tk-date">Heute</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-sg set-est"><span class="tk tk-date">Heute</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">S2 Ep12 Erstes Mal in NYC…</span></td>
-          <td class="col-default set-grab"><span class="tk tk-prefix">Geplant</span> <span class="tk tk-date">heute</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-default set-grab"><span class="tk tk-date">Heute</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span> <span class="tk tk-prefix">Geplant</span></td>
           <td class="col-detail set-grab"><span class="tk tk-badge">Geplant</span> <span class="tk tk-date">Heute</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-sg set-grab"><span class="tk tk-badge">Geplant</span> <span class="tk tk-date">Heute</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">S2 Ep12 Erstes Mal in NYC…</span></td></tr>
         <tr><td class="level col-nivel">Futuro Mañana</td>
@@ -1300,7 +1302,7 @@ details[open] summary { margin-bottom: 8px; }
           <td class="col-default set-est"><span class="tk tk-date">Morgen</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-detail set-est"><span class="tk tk-badge tk-badge-coming"><i class="ph ph-clock"></i>Demnächst</span> <span class="tk tk-date">Morgen</span><span class="tk tk-comma">,</span> <span class="tk tk-time">22:00</span></td>
           <td class="col-sg set-est"><span class="tk tk-badge tk-badge-coming"><i class="ph ph-clock"></i>Demnächst</span> <span class="tk tk-date">Morgen</span><span class="tk tk-comma">,</span> <span class="tk tk-time">22:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">S2 Ep12 Erstes Mal in NYC…</span></td>
-          <td class="col-default set-grab"><span class="tk tk-prefix">Geplant</span> <span class="tk tk-date">morgen</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-default set-grab"><span class="tk tk-date">Morgen</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span> <span class="tk tk-prefix">Geplant</span></td>
           <td class="col-detail set-grab"><span class="tk tk-badge">Geplant</span> <span class="tk tk-date">Morgen</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-sg set-grab"><span class="tk tk-badge">Geplant</span> <span class="tk tk-date">Morgen</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">S2 Ep12 Erstes Mal in NYC…</span></td></tr>
         <tr><td class="level col-nivel">Futuro 2-7 días</td>
@@ -1308,7 +1310,7 @@ details[open] summary { margin-bottom: 8px; }
           <td class="col-default set-est"><span class="tk tk-date">Donnerstag</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-detail set-est"><span class="tk tk-badge tk-badge-coming"><i class="ph ph-clock"></i>Demnächst</span> <span class="tk tk-date">Donnerstag</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-sg set-est"><span class="tk tk-badge tk-badge-coming"><i class="ph ph-clock"></i>Demnächst</span> <span class="tk tk-date">Donnerstag</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">S2 Ep12 Erstes Mal in NYC…</span></td>
-          <td class="col-default set-grab"><span class="tk tk-prefix">Geplant</span> <span class="tk tk-date">donnerstag</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+          <td class="col-default set-grab"><span class="tk tk-date">Donnerstag</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span> <span class="tk tk-prefix">Geplant</span></td>
           <td class="col-detail set-grab"><span class="tk tk-badge">Geplant</span> <span class="tk tk-date">Donnerstag</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
           <td class="col-sg set-grab"><span class="tk tk-badge">Geplant</span> <span class="tk tk-date">Donnerstag</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span><span class="tk tk-comma">:</span> <span class="tk tk-content">S2 Ep12 Erstes Mal in NYC…</span></td></tr>
         <tr><td class="level col-nivel">Futuro +7 días</td>
@@ -1316,7 +1318,7 @@ details[open] summary { margin-bottom: 8px; }
           <td class="col-default set-est"><span class="tk tk-date">10. Dezember</span></td>
           <td class="col-detail set-est"><span class="tk tk-badge tk-badge-coming"><i class="ph ph-clock"></i>Demnächst</span> <span class="tk tk-date">10. Dezember</span></td>
           <td class="col-sg set-est"><span class="tk tk-badge tk-badge-coming"><i class="ph ph-clock"></i>Demnächst</span> <span class="tk tk-date">10. Dezember</span><span class="tk tk-comma">:</span> <span class="tk tk-content">S2 Ep12 Erstes Mal in NYC…</span></td>
-          <td class="col-default set-grab"><span class="tk tk-prefix">Geplant</span> <span class="tk tk-date">10. Dezember</span></td>
+          <td class="col-default set-grab"><span class="tk tk-date">10. Dezember</span> <span class="tk tk-prefix">Geplant</span></td>
           <td class="col-detail set-grab"><span class="tk tk-badge">Geplant</span> <span class="tk tk-date">10. Dezember</span></td>
           <td class="col-sg set-grab"><span class="tk tk-badge">Geplant</span> <span class="tk tk-date">10. Dezember</span><span class="tk tk-comma">:</span> <span class="tk tk-content">S2 Ep12 Erstes Mal in NYC…</span></td></tr>
       </tbody>
@@ -1373,7 +1375,7 @@ details[open] summary { margin-bottom: 8px; }
           <div class="level-tag">Pasado 2-7 días</div>
           <div class="caption-row">
             <span class="caption-content">
-              <span class="loc-text" data-locale="es-ES"><img class="tk-u7d" src="img/U7D.png" alt="U7D"> <span class="tk tk-date">Dom. 21</span></span>
+              <span class="loc-text" data-locale="es-ES"><img class="tk-u7d" src="img/U7D.png" alt="U7D"> <span class="tk tk-date">dom. 21</span></span>
               <span class="loc-text" data-locale="es-HISPAM" hidden=""><span class="tk tk-prefix">Emitido</span> <span class="tk tk-date">dom. 21</span></span>
               <span class="loc-text" data-locale="pt-BR" hidden=""><span class="tk tk-prefix">Exibido</span> <span class="tk tk-date">dom, 21</span></span>
               <span class="loc-text" data-locale="de-DE" hidden=""><span class="tk tk-date">So., 21.</span> <span class="tk tk-prefix">gesendet</span></span>
@@ -1388,7 +1390,7 @@ details[open] summary { margin-bottom: 8px; }
           <div class="level-tag">Pasado Ayer</div>
           <div class="caption-row">
             <span class="caption-content">
-              <span class="loc-text" data-locale="es-ES"><img class="tk-u7d" src="img/U7D.png" alt="U7D"> <span class="tk tk-date">Ayer</span></span>
+              <span class="loc-text" data-locale="es-ES"><img class="tk-u7d" src="img/U7D.png" alt="U7D"> <span class="tk tk-date">ayer</span></span>
               <span class="loc-text" data-locale="es-HISPAM" hidden=""><span class="tk tk-prefix">Emitido</span> <span class="tk tk-date">ayer</span></span>
               <span class="loc-text" data-locale="pt-BR" hidden=""><span class="tk tk-prefix">Exibido</span> <span class="tk tk-date">ontem</span></span>
               <span class="loc-text" data-locale="de-DE" hidden=""><span class="tk tk-date">Gestern</span> <span class="tk tk-prefix">gesendet</span></span>
@@ -1403,7 +1405,7 @@ details[open] summary { margin-bottom: 8px; }
           <div class="level-tag">Pasado Hoy</div>
           <div class="caption-row">
             <span class="caption-content">
-              <span class="loc-text" data-locale="es-ES"><img class="tk-u7d" src="img/U7D.png" alt="U7D"> <span class="tk tk-date">Hoy</span></span>
+              <span class="loc-text" data-locale="es-ES"><img class="tk-u7d" src="img/U7D.png" alt="U7D"> <span class="tk tk-date">hoy</span></span>
               <span class="loc-text" data-locale="es-HISPAM" hidden=""><span class="tk tk-prefix">Emitido</span> <span class="tk tk-date">hoy</span></span>
               <span class="loc-text" data-locale="pt-BR" hidden=""><span class="tk tk-prefix">Exibido</span> <span class="tk tk-date">hoje</span></span>
               <span class="loc-text" data-locale="de-DE" hidden=""><span class="tk tk-date">Heute</span> <span class="tk tk-prefix">gesendet</span></span>
@@ -1591,8 +1593,8 @@ details[open] summary { margin-bottom: 8px; }
       <tr>
         <td class="vname"><span class="var-tag" data-variant="prefix-ext"><i class="ph ph-arrow-square-out"></i>Prefix externo</span></td>
         <td>Detail Page · Movie / Serie episodio (zona CTA superior)</td>
-        <td>El prefix sale del string — se renderiza como componente badge externo ("Programado", "En emisión", etc.). El airing string omite el prefix.</td>
-        <td><span class="tk tk-badge">Programado</span> <span class="tk tk-date">Mañana</span><span class="tk tk-comma">,</span> <span class="tk tk-time">20:00</span></td>
+        <td>El prefix sale del string — se renderiza como componente <code>tk-badge</code> separado ("Próximamente", "En emisión", "Grabación programada", etc.). El airing string omite el prefix.</td>
+        <td><span class="tk tk-badge tk-badge-coming"><i class="ph ph-clock"></i>Próximamente</span> <span class="tk tk-date">Mañana</span><span class="tk tk-comma">,</span> <span class="tk tk-time">22:00</span></td>
       </tr>
       <tr>
         <td class="vname"><span class="var-tag" data-variant="trailing-colon"><i class="ph ph-text-colon"></i>Trailing colon</span></td>
@@ -1631,8 +1633,8 @@ details[open] summary { margin-bottom: 8px; }
     <table class="variants-table" style="margin-top:6px">
       <thead><tr><th>Token</th><th>Vive en</th><th>Cuándo aparece</th></tr></thead>
       <tbody>
-        <tr><td><span class="tk tk-badge">Programado</span></td><td>Componente badge — hermano del Airing dentro de la card / detail</td><td>Grabación Futuro Hoy-Mñn / 2-7d / +7d en Detail Page · sustituye al prefix del airing string</td></tr>
-        <tr><td><span class="tk tk-u7d">U7D</span></td><td>Componente badge — hermano del Airing</td><td><strong>Solo ES (Movistar+).</strong> Pasado Ayer Detail Page · marca el catch-up de los últimos 7 días. O2 y VIVO no usan este badge — su catch-up es por canal (24h, 48h, sin VOD).</td></tr>
+        <tr><td><span class="tk tk-badge tk-badge-coming"><i class="ph ph-clock"></i>Próximamente</span></td><td>Componente badge — hermano del Airing dentro de la card / detail</td><td>Futuro Hoy-Mñn / 2-7d en Detail Page · sustituye al prefix del airing string</td></tr>
+        <tr><td><span class="tk tk-badge"><i class="ph ph-arrow-counter-clockwise"></i>U7D</span></td><td>Componente badge — hermano del Airing</td><td><strong>Solo ES (Movistar+).</strong> Pasado Ayer Detail Page · marca el catch-up de los últimos 7 días. O2 y VIVO no usan este badge — su catch-up es por canal (24h, 48h, sin VOD).</td></tr>
         <tr><td><span class="tk tk-progress"><span class="bar"></span>00:50 / 00:50</span></td><td>Componente <code>progress</code> dentro del <strong>CTA Ver / Play</strong> — no del Airing</td><td>Solo Directo · el time range sale del airing string y se muestra como barra elapsed/total bajo el botón</td></tr>
       </tbody>
     </table>
@@ -1984,14 +1986,6 @@ details[open] summary { margin-bottom: 8px; }
       const wd = isCap ? I18N.weekdaysCap[locale] : I18N.weekdaysLower[locale];
       if (locale === 'de-DE') return wd[d.getDay()]+' '+d.getDate()+'.';
       return wd[d.getDay()]+' '+d.getDate();
-    }
-    // Weekday completo, DD.MM. — DE Pasado 2-7d: "Donnerstag, 10.12."
-    const matchWdDayMonth = original.match(/^([A-Za-zÄÖÜäöü]+),\s+(\d{1,2})\.(\d{1,2})\.?$/);
-    if (matchWdDayMonth) {
-      const wd = isCap ? I18N.weekdaysCap[locale] : I18N.weekdaysLower[locale];
-      const dd = String(d.getDate()).padStart(2,'0');
-      const mm = String(d.getMonth()+1).padStart(2,'0');
-      return wd[d.getDay()]+', '+dd+'.'+mm+'.';
     }
     // Weekday abreviado con día: "Jue. 10", "qui, 10", "Do., 10."
     const matchAbbrComma = original.match(/^([A-Za-záéíóúäöüÄÖÜ]+)\.?,?\s+(\d{1,2})\.?$/);
